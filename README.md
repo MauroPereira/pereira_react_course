@@ -1,7 +1,8 @@
-# Pereira JS Course
+# Pereira React Course
 
 ## Datos del alumno
 * Nombre: Pereira, Mauro Alejandro
-* Comisión: 34130
-* Curso: Javascript
+* Plataforma: CoderHouse
+* Comisión: 39585
+* Curso: React
 * E-mail: mauro.a.pereira@gmail.com
