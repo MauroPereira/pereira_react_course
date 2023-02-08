@@ -20,3 +20,6 @@ let productos = [
     { id: 6, nombre: 'Agenda', precio: 78.90 },
 ]
 
+// Respuesta A
+
+
