@@ -4,33 +4,27 @@ highlighted_green_text(){
     echo -e "\e[1;32m$1\e[0m"
 }
 
-highlighted_green_text "Instalador de herramientas de trabajo iniciando"
+highlighted_green_text "Instalador de herramientas de trabajo iniciando!"
 highlighted_green_text "Descargando e instalando paquetes necesarios..."
-sudo apt update -y && sudo apt install -y git gitk wget tar virtualenv sqlitebrowser python-tk python3-tk tk-dev
+sudo apt update -y && sudo apt install -y wget
 highlighted_green_text "Descargando Visual Studio Code e instalandolo..." 
 wget -O "code_amd64.deb" "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 sudo apt install -y ./code_amd64.deb
 rm code_amd64.deb
-highlighted_green_text "Creando directorio donde instalar Python..."
-mkdir $HOME/python 
-cd $HOME/python
-highlighted_green_text "Descargando Python y descomprimiendo..."
-wget "https://www.python.org/ftp/python/3.10.4/Python-3.10.4.tar.xz"
-tar -Jxvf Python-3.10.4.tar.xz
-highlighted_green_text "Paquetes necesarios en el SO antes de compilar e instalar Python..."
-sudo apt install -y build-essential libffi-dev ncurses-dev python3-tk zlib1g-dev libssl-dev python3-virtualenv libsqlite3-dev peewee
-cd Python-3.10.4 && ./configure && make && sudo make install
-highlighted_green_text "Creación de entorno virtual..."
-virtualenv -p /home/mauro/python/Python-3.10.4/python /home/mauro/python/vir_python/py39_mb-stock_env
-highlighted_green_text "Activa el entorno virtual e instala los paquetes de Python necesarios..."
-source /home/mauro/python/vir_python/py39_mb-stock_env/bin/activate
-python3 -m pip install --upgrade pip
-pip install -U setuptools
-highlighted_green_text "Paquetes necesarios para desarrollo..."
-pip3 install -r ~/repos/map/mb-stock/mb-stock/requirements_dev.txt
-highlighted_green_text "Paquetes necesarios para producción..."
-pip3 install -r ~/repos/map/mb-stock/mb-stock/requirements.txt
-highlighted_green_text "Instalador de herramientas de trabajo finalizado"
+highlighted_green_text "Descargando Node JS y descomprimiendo..."
+wget "https://nodejs.org/dist/v18.14.0/node-v18.14.0-linux-x64.tar.xz"
+sudo tar -vxf node-v18.14.0-linux-x64.tar.xz -C /opt
+rm node-v18.14.0-linux-x64.tar.xz
+highlighted_green_text "Creando enlaces simbólicos..."
+sudo ln -sf /opt/node-v18.14.0-linux-x64/bin/corepack /usr/bin/corepack
+sudo ln -sf /opt/node-v18.14.0-linux-x64/bin/node /usr/bin/node
+sudo ln -sf /opt/node-v18.14.0-linux-x64/bin/npm /usr/bin/npm
+sudo ln -sf /opt/node-v18.14.0-linux-x64/bin/npx /usr/bin/npx
+highlighted_green_text "Chequeando version de node js..."
+node -v
+highlighted_green_text "Chequeando version de npm..."
+npm -v
+highlighted_green_text "Instalador de herramientas de trabajo finalizado."
 
 
 
