@@ -1,2 +1,0 @@
-mas dificil material ui… si no sabes ninguno empezaria con tailwindcss
-y dejaria materialui para cuando termines el curso
