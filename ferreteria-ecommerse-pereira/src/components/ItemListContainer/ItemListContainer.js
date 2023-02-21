@@ -7,7 +7,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
-import Divider from '@mui/material/Divider';
 
 
 export const ItemListContainer = () => {

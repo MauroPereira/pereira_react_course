@@ -1,4 +1,5 @@
 import './Categories.scss'
+import Button from '@mui/material/Button';
 
 export const Categories = () => {
   return (
@@ -28,7 +29,8 @@ export const Categories = () => {
             Muebles            
           </label>
           
-          <input type="submit" value="Aplicar"></input>
+          {/* <input type="submit" value="Aplicar"></input> */}
+          <Button type="submit" variant="contained">Aplicar selección</Button>
           
         </form>      
       </div> 
