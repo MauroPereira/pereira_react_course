@@ -1,5 +1,6 @@
 import './Navbar.scss'
 import logo from './icono_ferreteria.png'
+import { CartWidget } from '../CartWidget/CartWidget';
 
 export const Navbar = () => {
   return (
@@ -19,6 +20,9 @@ export const Navbar = () => {
             Contáctanos
           </a>
         </nav>
+
+        <CartWidget/>
+        
       </div>
     </header>
   );

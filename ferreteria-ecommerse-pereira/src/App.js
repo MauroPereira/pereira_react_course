@@ -13,8 +13,8 @@ function App() {
     <div>
       <Navbar />
       <MainTitle />
-      {/* <ItemListContainer /> */}
-      <ItemListContainerMui />
+      <ItemListContainer />
+      {/* <ItemListContainerMui /> */}
       <Categories />
     </div>
   );

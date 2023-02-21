@@ -7,6 +7,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
+import Divider from '@mui/material/Divider';
+
 
 export const ItemListContainer = () => {
     return (
@@ -25,27 +27,30 @@ export const ItemListContainer = () => {
 
 
 export const ItemListContainerMui = () => {
-    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-        <nav aria-label="main mailbox folders">
-        <List>
-            <ListItem disablePadding>
-            <ListItemButton>
-                <ListItemIcon>
-                <InboxIcon />
-                </ListItemIcon>
-                <ListItemText primary="Inbox" />
-            </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-            <ListItemButton>
-                <ListItemIcon>
-                <DraftsIcon />
-                </ListItemIcon>
-                <ListItemText primary="Drafts" />
-            </ListItemButton>
-            </ListItem>
-        </List>
-        </nav>
-    </Box>
-
-}
+    return (
+        <div className="itemlistmui__container" >
+            <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            <nav aria-label="main mailbox folders">
+                <List>
+                <ListItem disablePadding>
+                    <ListItemButton>
+                    <ListItemIcon>
+                        <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Inbox" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                    <ListItemButton>
+                    <ListItemIcon>
+                        <DraftsIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Drafts" />
+                    </ListItemButton>
+                </ListItem>
+                </List>
+            </nav>
+            </Box>
+        </div>
+      );
+};
