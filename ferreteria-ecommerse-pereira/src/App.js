@@ -1,8 +1,8 @@
 import "./App.css";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Categories } from "./components/Categories/Categories";
-import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer";
-import { Main_title } from "./components/Main_title/Main_title";
+import { ItemListContainer, ItemListContainerMui } from "./components/ItemListContainer/ItemListContainer";
+import { MainTitle } from "./components/MainTitle/MainTitle";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -12,8 +12,9 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Main_title />
-      <ItemListContainer />
+      <MainTitle />
+      {/* <ItemListContainer /> */}
+      <ItemListContainerMui />
       <Categories />
     </div>
   );

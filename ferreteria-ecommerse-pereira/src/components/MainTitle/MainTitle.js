@@ -1,6 +1,6 @@
-import './Main_title.scss'
+import './MainTitle.scss'
 
-export const Main_title = () =>{
+export const MainTitle = () =>{
     return (
         <div className='maintitle__container'>
             <h1>Ferretería Pereira</h1>
