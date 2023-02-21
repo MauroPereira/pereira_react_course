@@ -27,8 +27,7 @@ Componente Navbar.Js
 #### Formato
 Link al último commit de tu repositorio en Github. Debe tener el nombre “PreEntrega1+Apellido”
 #### Consigna.
-* Crea un componente CartWidget con un ícono y una
-notificación mostrando un número hardcodeado (fijo). Este servirá luego para indicar la cantidad de elementos que tenemos en el carrito pero por ahora, mostrará un número hardcodeado (colocado en el código). Ubica este componente (CartWidget) dentro de Navbar. Agrega algunos estilos con bootstrap/materialize u otro.
+* Crea un componente CartWidget con un ícono y una notificación mostrando un número hardcodeado (fijo). Este servirá luego para indicar la cantidad de elementos que tenemos en el carrito pero por ahora, mostrará un número hardcodeado (colocado en el código). Ubica este componente (CartWidget) dentro de Navbar. Agrega algunos estilos con bootstrap/materialize u otro.
 * Crea un componente contenedor ItemListContainer.js con una prop greeting, y muestra el mensaje dentro del contenedor con el styling integrado.
 #### Objetivos
 * Crear la landing de tu proyecto.
@@ -40,3 +39,9 @@ Componente Navbar.Js
 
 ### Versiones
 * v1.0:
+    * E-commerce de una ferretería, incluye colores del proyecto de javascript https://mauropereira.github.io/pereira_js_course/FerreteriaEshopPereira/
+    * Navbar con ícono de la ferretería, links de interés y cartwidget con un contador hardcodeado.
+    * ItemListContainer donde figuran las ofertas.
+    * Lista de categorías clickeables tipo formulario con un botón de submit el cual tiene un estilo que deriva de aplicarle Material UI.
+
+
