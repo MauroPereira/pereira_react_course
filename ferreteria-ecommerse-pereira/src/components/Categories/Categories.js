@@ -1,3 +1,5 @@
+import './Categories.scss'
+
 export const Categories = () => {
   return (
   <section className="section">
