@@ -1,3 +1,5 @@
+import './Navbar.css'
+
 export const Navbar = () => {
   return (
     <header className="header">
