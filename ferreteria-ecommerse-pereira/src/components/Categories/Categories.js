@@ -5,29 +5,30 @@ export const Categories = () => {
   <section className="section">
       <div className = "section__container">
         <h1 className="form__title">Categorías de rubros</h1>
+        <hr/>
 
         <form className="form__categories">          
           <label className="form__label">
-            Herramientas
             <input type="checkbox" name="herramientas" />             
+            Herramientas            
           </label>
 
           <label className="form__label">
-            Electricidad
             <input type="checkbox" name="electricidad" />             
+            Electricidad            
           </label>          
 
           <label className="form__label">
-            Construcción
-            <input type="checkbox" name="contruccion" />             
+            <input className="form__checkbox" type="checkbox" name="contruccion" />             
+            Construcción            
           </label>
 
           <label className="form__label">
-            Muebles
             <input type="checkbox" name="muebles" />             
+            Muebles            
           </label>
           
-          <input type="submit" value="Seleccionar"></input>
+          <input type="submit" value="Aplicar"></input>
           
         </form>      
       </div> 
