@@ -9,10 +9,10 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 
 
-export const ItemListContainer = () => {
+export const ItemListContainer = ({greeting}) => {
     return (
         <div className="itemlist__container">
-            <h2 className="itemlist__title">Gran oferta en</h2>
+            <h2 className="itemlist__title">{greeting}</h2>
             <hr/>
             <ul>
                 <li className='itemlist_item'>Clavos</li>

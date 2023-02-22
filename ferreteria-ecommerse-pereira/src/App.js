@@ -13,7 +13,7 @@ function App() {
     <div>
       <Navbar />
       <MainTitle />
-      <ItemListContainer />
+      <ItemListContainer greeting="Grandes ofertas en"/>
       {/* <ItemListContainerMui /> */}
       <Categories />
     </div>

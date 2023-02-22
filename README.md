@@ -43,5 +43,7 @@ Componente Navbar.Js
     * Navbar con ícono de la ferretería, links de interés y cartwidget con un contador hardcodeado.
     * ItemListContainer donde figuran las ofertas.
     * Lista de categorías clickeables tipo formulario con un botón de submit el cual tiene un estilo que deriva de aplicarle Material UI.
+* v1.1:
+    * Incorporada la propiedad greeting dentro de ItemLisContainer.js
 
 
