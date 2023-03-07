@@ -8,6 +8,9 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 
+const MOCK_DATA = [
+    
+]
 
 export const ItemListContainer = ({greeting}) => {
     return (
