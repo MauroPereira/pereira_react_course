@@ -1,11 +1,49 @@
 [
   {
     "id": 1,
-    "name": "Producto 1",
-    "description": "Lorem ipsum producto 1",
-    "price": 1500,
-    "img": "https://via.placeholder.com/220",
+    "name": "Martillo",
+    "description": "Martillo de cabeza de metal con mango de madera",
+    "price": 2.5,
+    "stock": 20
+    "img": "https://i.postimg.cc/Z5Fk0tkK/martillo.jpg",
+    "category": "herramientas"
+  },
+  {
+    "id": 2,
+    "name": "Pinza punta larga",
+    "description": "Pinza de punta larga con mango aislante",
+    "price": 3.9,
+    "stock": 20,
+    "img": "https://i.postimg.cc/bvz7tC80/pinza-punta-larga.jpg",
+    "category": "herramientas"
+  },
+  {
+    "id": 3,
+    "name": "Serrucho",
+    "description": "Serrucho de mango de madera",
+    "price": 2.8,
+    "stock": 20,
+    "img": "https://i.postimg.cc/mr80NY2v/serucho.jpg",
+    "category": "herramientas"
+  },
+  {
+    "id": 4,
+    "name": "Sierra en arco",
+    "description": "Sierra en arco para metal duro con mango de plástico",
+    "price": 8.0,
+    "stock": 20,
+    "img": "https://i.postimg.cc/RFYy2vtG/sierra-en-arco-para-metal.jpg",
+    "category": "herramientas"
+  },
+  {
+    "id": 5,
+    "name": "Tenaza",
+    "description": "Tenaza larga",
+    "price": 7.6,
+    "stock": 20,
+    "img": "https://i.postimg.cc/nzrNdXXC/tenaza.jpg",
     "category": "herramientas"
   }
+
 ]
 // Categorias: herramientas, electricidad, construccion, pintura
