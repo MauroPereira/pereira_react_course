@@ -43,7 +43,87 @@
     "stock": 20,
     "img": "https://i.postimg.cc/nzrNdXXC/tenaza.jpg",
     "category": "herramientas"
+  },
+  {
+    "id": 6,
+    "name": "Cable unipolar 1.5mm2",
+    "description": "Cable unipolar 1.5mm2 rollo por 100mts certificado IRAM",
+    "price": 8.1,
+    "stock": 20,
+    "img": "https://i.postimg.cc/j2g5pwXm/cable-unipolar-1-5mm2.jpg",
+    "category": "electricidad"
+  },
+  {
+    "id": 7,
+    "name": "Cinta aisladora negra",
+    "description": "Cinta aisladora negra 20mts",
+    "price": 8.1,
+    "stock": 20,
+    "img": "https://i.postimg.cc/sXzv7Rx6/cinta-aisladora.jpg",
+    "category": "electricidad"
+  }, 
+  {
+    "id":8,
+    "name": "Cinta aisladora negra",
+    "description": "Cinta aisladora negra 20mts",
+    "price": 8.1,
+    "stock": 20,
+    "img": "https://i.postimg.cc/sXzv7Rx6/cinta-aisladora.jpg",
+    "category": "electricidad"
+  }, 
+  {
+    "id": 10,
+    "name": "Enchufe hembra 3 patas",
+    "description": "Enchufe hembra 3 patas salida recta 10A",
+    "price": 8.1,
+    "stock": 20,
+    "img": "https://i.postimg.cc/FRx1xnJ9/enchufe-hembra-3-patas.jpg",
+    "category": "electricidad"
+  }, 
+  {
+    "id": 11,
+    "name": "Enchufe macho 3 patas",
+    "description": "Enchufe macho 3 patas salida recta 10A",
+    "price": 8.1,
+    "stock": 20,
+    "img": "https://i.postimg.cc/FzszCgj0/enchufe-macho-3-patas.jpg",
+    "category": "electricidad"
+  },
+  {
+    "id": 12,
+    "name": "Brocha redonda Nº12",
+    "description": "Brocha redonda Nº12 mango de madera para pinturas sintéticas y barnices",
+    "price": 8.1,
+    "stock": 20,
+    "img": "https://i.postimg.cc/zfQ1YwZn/brocha-redonda-n12.jpg",
+    "category": "pintura"
+  },
+  {
+    "id": 13,
+    "name": "Cinta de papel azul para pintura",
+    "description": "Cinta de papel azul para pintura 18mm x 50mts",
+    "price": 8.1,
+    "stock": 20,
+    "img": "https://i.postimg.cc/Y9mBr4MT/cinta-papel-pintura-azul.jpg",
+    "category": "pintura"
+  },
+  {
+    "id": 14,
+    "name": "Pintura latex blanca interior",
+    "description": "Pintura latex blanca interior tacho por 10lts",
+    "price": 8.1,
+    "stock": 20,
+    "img": "https://i.postimg.cc/Bb99Xqvb/pintura-latex-interior-tacho-10lts.jpg",
+    "category": "pintura"
+  },
+  {
+    "id": 15,
+    "name": "Rodillo nº12",
+    "description": "Rodillo nº12 de polyester",
+    "price": 8.1,
+    "stock": 20,
+    "img": "https://i.postimg.cc/SR609wXr/rodillo-polyester-n22.jpg",
+    "category": "pintura"
   }
-
 ]
 // Categorias: herramientas, electricidad, construccion, pintura
