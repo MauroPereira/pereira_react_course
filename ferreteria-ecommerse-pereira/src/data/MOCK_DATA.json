@@ -124,6 +124,15 @@
     "stock": 20,
     "img": "https://i.postimg.cc/SR609wXr/rodillo-polyester-n22.jpg",
     "category": "pintura"
+  },
+  {
+    "id": 16,
+    "name": "Arena fina",
+    "description": "Arena fina bolsa de 14Kg",
+    "price": 8.1,
+    "stock": 20,
+    "img": "https://i.postimg.cc/8zyHZtMm/arena-fina-bolsa-bolsa-14kg.jpg",
+    "category": "contruccion"
   }
 ]
 // Categorias: herramientas, electricidad, construccion, pintura
