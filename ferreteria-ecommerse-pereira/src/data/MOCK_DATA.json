@@ -133,6 +133,33 @@
     "stock": 20,
     "img": "https://i.postimg.cc/8zyHZtMm/arena-fina-bolsa-bolsa-14kg.jpg",
     "category": "contruccion"
+  },
+  {
+    "id": 17,
+    "name": "Cemento Portland",
+    "description": "Cemento Portland bolsa de 50Kg",
+    "price": 8.1,
+    "stock": 20,
+    "img": "https://i.postimg.cc/zfVk6KkZ/bolsa-cemento-portland-50kg.jpg",
+    "category": "contruccion"
+  },
+  {
+    "id": 18,
+    "name": "Cemento Portland",
+    "description": "Cemento Portland bolsa de 50Kg",
+    "price": 8.1,
+    "stock": 20,
+    "img": "https://i.postimg.cc/k4SvXCZT/hierro-nervado-6mm-6m.png",
+    "category": "contruccion"
+  },
+  {
+    "id": 19,
+    "name": "Ladrillo cerámico 9 tubos",
+    "description": "Ladrillo cerámico 9 tubos 18x18x33cm",
+    "price": 8.1,
+    "stock": 20,
+    "img": "https://i.postimg.cc/QMwq3C6B/ladrillo-ceramico-18x18x33-9-tubos.jpg",
+    "category": "contruccion"
   }
 ]
 // Categorias: herramientas, electricidad, construccion, pintura
