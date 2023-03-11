@@ -14,29 +14,35 @@ import "@fontsource/roboto/700.css";
 
 function App() {
   return (
-    <BrowserRouter>
-      {/* Común a todos */}
+    <div>
       <Navbar />
+      <MainTitle />
+      <ItemListContainer greeting="Grandes ofertas en" />
+    </div>
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <di>
-              <MainTitle />
-              <ItemListContainer greeting="Grandes ofertas en" />
-            </di>
-          }
-        />
+    // <BrowserRouter>
+    //   {/* Común a todos */}
+    //   <Navbar />
 
-        <Route path="/" element={<ItemListContainerMui />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/contacto" element={<Contacto />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+    //   <Routes>
+    //     <Route
+    //       path="/"
+    //       element={
+    //         <di>
+    //           <MainTitle />
+    //           <ItemListContainer greeting="Grandes ofertas en" />
+    //         </di>
+    //       }
+    //     />
 
-      {/* {<Footer />} */}
-    </BrowserRouter>
+    //     <Route path="/" element={<ItemListContainerMui />} />
+    //     <Route path="/categories" element={<Categories />} />
+    //     <Route path="/contacto" element={<Contacto />} />
+    //     <Route path="*" element={<Navigate to="/" />} />
+    //   </Routes>
+
+    //   {/* {<Footer />} */}
+    // </BrowserRouter>
   );
 }
 
