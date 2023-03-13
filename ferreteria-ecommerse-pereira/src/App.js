@@ -6,6 +6,7 @@ import {
   ItemListContainerMui,
 } from "./components/ItemListContainer/ItemListContainer";
 import { MainTitle } from "./components/MainTitle/MainTitle";
+import DolarsiApi from "./components/DolarsiApi/DolarsiApi";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -17,6 +18,7 @@ function App() {
     <div>
       <Navbar />
       <MainTitle />
+      <DolarsiApi />
       <ItemListContainer greeting="Productos" />
     </div>
 

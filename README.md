@@ -75,8 +75,7 @@ Componente Navbar.Js
 
 ### Formato
 
-Link a último commit de git donde se cumplan los objetivos + GIF mostrando la navegabilidad. Debe tener
-el nombre “PreEntrega2+Apellido”.
+Link a último commit de git donde se cumplan los objetivos + GIF mostrando la navegabilidad. Debe tener el nombre “PreEntrega2+Apellido”.
 
 ### Consigna
 
