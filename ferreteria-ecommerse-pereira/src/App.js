@@ -15,13 +15,12 @@ import "@fontsource/roboto/700.css";
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Navbar />
       <MainTitle />
       <DolarsiApi />
       <ItemListContainer greeting="Productos" />
-    </div>
-
+    </BrowserRouter>
     // <BrowserRouter>
     //   {/* Común a todos */}
     //   <Navbar />
