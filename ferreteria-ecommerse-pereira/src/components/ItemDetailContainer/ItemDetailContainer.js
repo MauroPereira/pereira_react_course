@@ -2,15 +2,18 @@ import "./ItemDetailContainer.scss";
 import { dataRequestforId } from "../../helpers/dataRequest";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
   const [Loading, setLoading] = useState(true);
 
+  const { itemId } = useParams();
+
   useEffect(() => {
     setLoading(true);
 
-    dataRequestforId(1)
+    dataRequestforId(Number(itemId))
       .then((resp) => {
         setItem(resp);
       })

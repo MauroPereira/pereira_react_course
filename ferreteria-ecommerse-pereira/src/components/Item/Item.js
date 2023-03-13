@@ -1,6 +1,7 @@
 import "./Item.scss";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import { Link } from "react-router-dom";
 
 const Item = ({ item }) => {
   return (
@@ -12,8 +13,10 @@ const Item = ({ item }) => {
         Precio: <strong>${item.price}</strong>
       </p>
       <p>Cantidad: {item.stock}</p>
-      <Button type="submit" variant="contained">
-        Agregar
+      <Button variant="contained">
+        <Link to={`/detail/${item.id}`} type="submit" variant="contained">
+          Ver más
+        </Link>
       </Button>
     </Grid>
   );
