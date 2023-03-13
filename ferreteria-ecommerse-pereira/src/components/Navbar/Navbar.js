@@ -15,6 +15,18 @@ export const Navbar = () => {
           <Link to="/" className="navbar__link">
             Inicio
           </Link>
+          <Link to="/productos/herramientas" className="navbar__link">
+            Herramientas
+          </Link>
+          <Link to="/productos/electricidad" className="navbar__link">
+            Electricidad
+          </Link>
+          <Link to="/productos/pintura" className="navbar__link">
+            Pintura
+          </Link>
+          <Link to="/productos/construccion" className="navbar__link">
+            Contrucción
+          </Link>
           <Link to="/nosotros" className="navbar__link">
             Nosotros
           </Link>

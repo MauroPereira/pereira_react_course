@@ -123,7 +123,7 @@
     "price": 8.1,
     "stock": 20,
     "img": "https://i.postimg.cc/8zyHZtMm/arena-fina-bolsa-bolsa-14kg.jpg",
-    "category": "contruccion"
+    "category": "construccion"
   },
   {
     "id": 16,
@@ -132,7 +132,7 @@
     "price": 8.1,
     "stock": 20,
     "img": "https://i.postimg.cc/zfVk6KkZ/bolsa-cemento-portland-50kg.jpg",
-    "category": "contruccion"
+    "category": "construccion"
   },
   {
     "id": 17,
@@ -141,7 +141,7 @@
     "price": 8.1,
     "stock": 20,
     "img": "https://i.postimg.cc/k4SvXCZT/hierro-nervado-6mm-6m.png",
-    "category": "contruccion"
+    "category": "construccion"
   },
   {
     "id": 18,
@@ -150,6 +150,6 @@
     "price": 8.1,
     "stock": 20,
     "img": "https://i.postimg.cc/QMwq3C6B/ladrillo-ceramico-18x18x33-9-tubos.jpg",
-    "category": "contruccion"
+    "category": "construccion"
   }
 ]

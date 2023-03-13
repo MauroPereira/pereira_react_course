@@ -35,7 +35,7 @@ export const ItemListContainer = ({ greeting }) => {
       .finally(() => {
         setLoadingMsg(false); // para asegurarse que no se muestre el mensaje de Loading
       });
-  }, []);
+  }, [categoryId]);
   ///////////////////////////////////////////
 
   return (
