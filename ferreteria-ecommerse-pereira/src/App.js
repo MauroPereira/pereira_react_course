@@ -5,6 +5,7 @@ import {
   ItemListContainer,
   ItemListContainerMui,
 } from "./components/ItemListContainer/ItemListContainer";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import { MainTitle } from "./components/MainTitle/MainTitle";
 import DolarsiApi from "./components/DolarsiApi/DolarsiApi";
 import AboutUs from "./components/AboutUs/AboutUs";
@@ -36,6 +37,15 @@ function App() {
             <div>
               <DolarsiApi />
               <ItemListContainer greeting="Productos" />
+            </div>
+          }
+        />
+        <Route
+          path="/detail/:itemId"
+          element={
+            <div>
+              <DolarsiApi />
+              <ItemDetailContainer greeting="Detalle de producto" />
             </div>
           }
         />
