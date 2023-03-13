@@ -11,16 +11,23 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { dataRequest } from "../../helpers/dataRequest";
 import ItemList from "../ItemList/ItemList";
+import { useParams } from "react-router-dom";
 
 export const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
   const [loadingMsg, setLoadingMsg] = useState(true); // Primero False para no mostrar el mensaje de Loading
 
+  const { categoryId } = useParams();
+
   // Para que no se vuelva a cargar //////////
   useEffect(() => {
     dataRequest()
       .then((response) => {
-        setProducts(response);
+        if (!categoryId) {
+          setProducts(response);
+        } else {
+          setProducts(response.filter((prod) => prod.category === categoryId));
+        }
       })
       .catch((error) => {
         console.log(error); // se imprime si ha ocurrido un error

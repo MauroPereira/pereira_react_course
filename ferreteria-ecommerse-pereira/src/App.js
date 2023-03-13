@@ -30,6 +30,15 @@ function App() {
             </div>
           }
         />
+        <Route
+          path="/productos/:categoryId"
+          element={
+            <div>
+              <DolarsiApi />
+              <ItemListContainer greeting="Productos" />
+            </div>
+          }
+        />
         <Route path="/nosotros" element={<AboutUs />} />
         <Route path="/contacto" element={<Contact />} />
         <Route path="*" element={<Navigate to="/" />} />

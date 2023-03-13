@@ -4,6 +4,6 @@ export const dataRequest = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(MOCK_DATA);
-    }, 3000);
+    }, 1500);
   });
 };
