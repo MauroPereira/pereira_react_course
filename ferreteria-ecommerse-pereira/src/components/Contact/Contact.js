@@ -5,8 +5,10 @@ const Contact = () => {
     <div className="container">
       <h2>Contacto</h2>
       <hr />
-      <p>Celular: +543512546109</p>
-      <p>email: ferreteria.pereira.mauro@gmail.com</p>
+      <ul>
+        <li>Celular: +543512546109</li>
+        <li>email: ferreteria.pereira.mauro@gmail.com</li>
+      </ul>
     </div>
   );
 };
