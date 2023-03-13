@@ -20,9 +20,16 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <MainTitle />
-      <DolarsiApi />
       <Routes>
-        <Route path="/" element={<ItemListContainer greeting="Productos" />} />
+        <Route
+          path="/"
+          element={
+            <div>
+              <DolarsiApi />
+              <ItemListContainer greeting="Productos" />
+            </div>
+          }
+        />
         <Route path="/nosotros" element={<AboutUs />} />
         <Route path="/contacto" element={<Contact />} />
       </Routes>
