@@ -4,7 +4,7 @@
     "name": "Martillo",
     "description": "Martillo de cabeza de metal con mango de madera",
     "price": 2.5,
-    "stock": 20
+    "stock": 20,
     "img": "https://i.postimg.cc/Z5Fk0tkK/martillo.jpg",
     "category": "herramientas"
   },
@@ -61,16 +61,16 @@
     "stock": 20,
     "img": "https://i.postimg.cc/sXzv7Rx6/cinta-aisladora.jpg",
     "category": "electricidad"
-  }, 
+  },
   {
-    "id":8,
+    "id": 8,
     "name": "Cinta aisladora negra",
     "description": "Cinta aisladora negra 20mts",
     "price": 8.1,
     "stock": 20,
     "img": "https://i.postimg.cc/sXzv7Rx6/cinta-aisladora.jpg",
     "category": "electricidad"
-  }, 
+  },
   {
     "id": 10,
     "name": "Enchufe hembra 3 patas",
@@ -79,7 +79,7 @@
     "stock": 20,
     "img": "https://i.postimg.cc/FRx1xnJ9/enchufe-hembra-3-patas.jpg",
     "category": "electricidad"
-  }, 
+  },
   {
     "id": 11,
     "name": "Enchufe macho 3 patas",
@@ -162,4 +162,3 @@
     "category": "contruccion"
   }
 ]
-// Categorias: herramientas, electricidad, construccion, pintura

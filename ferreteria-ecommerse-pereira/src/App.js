@@ -17,7 +17,7 @@ function App() {
     <div>
       <Navbar />
       <MainTitle />
-      <ItemListContainer greeting="Grandes ofertas en" />
+      <ItemListContainer greeting="Productos" />
     </div>
 
     // <BrowserRouter>
