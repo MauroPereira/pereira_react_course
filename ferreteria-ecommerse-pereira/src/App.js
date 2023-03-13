@@ -20,10 +20,12 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <MainTitle />
-      <AboutUs />
-      <Contact />
       <DolarsiApi />
-      <ItemListContainer greeting="Productos" />
+      <Routes>
+        <Route path="/" element={<ItemListContainer greeting="Productos" />} />
+        <Route path="/nosotros" element={<AboutUs />} />
+        <Route path="/contacto" element={<Contact />} />
+      </Routes>
     </BrowserRouter>
 
     // <BrowserRouter>
