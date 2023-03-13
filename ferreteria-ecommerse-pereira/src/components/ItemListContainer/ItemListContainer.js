@@ -21,6 +21,8 @@ export const ItemListContainer = ({ greeting }) => {
 
   // Para que no se vuelva a cargar //////////
   useEffect(() => {
+    setLoadingMsg(true); // asi muestra el cartel de cargando
+
     dataRequest()
       .then((response) => {
         if (!categoryId) {
@@ -35,7 +37,7 @@ export const ItemListContainer = ({ greeting }) => {
       .finally(() => {
         setLoadingMsg(false); // para asegurarse que no se muestre el mensaje de Loading
       });
-  }, [categoryId]);
+  }, [categoryId]); // cuando cambia el parametro categoryId se monta de nuevo
   ///////////////////////////////////////////
 
   return (
