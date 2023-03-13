@@ -50,7 +50,7 @@
     "description": "Cable unipolar 1.5mm2 rollo por 100mts certificado IRAM",
     "price": 8.1,
     "stock": 20,
-    "img": "https://i.postimg.cc/j2g5pwXm/cable-unipolar-1-5mm2.jpg",
+    "img": "https://i.postimg.cc/L5721pRg/cable-unipolar-1-5mm2.jpg",
     "category": "electricidad"
   },
   {
@@ -63,16 +63,7 @@
     "category": "electricidad"
   },
   {
-    "id": 8,
-    "name": "Cinta aisladora negra",
-    "description": "Cinta aisladora negra 20mts",
-    "price": 8.1,
-    "stock": 20,
-    "img": "https://i.postimg.cc/sXzv7Rx6/cinta-aisladora.jpg",
-    "category": "electricidad"
-  },
-  {
-    "id": 10,
+    "id": 9,
     "name": "Enchufe hembra 3 patas",
     "description": "Enchufe hembra 3 patas salida recta 10A",
     "price": 8.1,
@@ -81,7 +72,7 @@
     "category": "electricidad"
   },
   {
-    "id": 11,
+    "id": 10,
     "name": "Enchufe macho 3 patas",
     "description": "Enchufe macho 3 patas salida recta 10A",
     "price": 8.1,
@@ -90,7 +81,7 @@
     "category": "electricidad"
   },
   {
-    "id": 12,
+    "id": 11,
     "name": "Brocha redonda Nº12",
     "description": "Brocha redonda Nº12 mango de madera para pinturas sintéticas y barnices",
     "price": 8.1,
@@ -99,7 +90,7 @@
     "category": "pintura"
   },
   {
-    "id": 13,
+    "id": 12,
     "name": "Cinta de papel azul para pintura",
     "description": "Cinta de papel azul para pintura 18mm x 50mts",
     "price": 8.1,
@@ -108,7 +99,7 @@
     "category": "pintura"
   },
   {
-    "id": 14,
+    "id": 13,
     "name": "Pintura latex blanca interior",
     "description": "Pintura latex blanca interior tacho por 10lts",
     "price": 8.1,
@@ -117,7 +108,7 @@
     "category": "pintura"
   },
   {
-    "id": 15,
+    "id": 14,
     "name": "Rodillo nº12",
     "description": "Rodillo nº12 de polyester",
     "price": 8.1,
@@ -126,7 +117,7 @@
     "category": "pintura"
   },
   {
-    "id": 16,
+    "id": 15,
     "name": "Arena fina",
     "description": "Arena fina bolsa de 14Kg",
     "price": 8.1,
@@ -135,7 +126,7 @@
     "category": "contruccion"
   },
   {
-    "id": 17,
+    "id": 16,
     "name": "Cemento Portland",
     "description": "Cemento Portland bolsa de 50Kg",
     "price": 8.1,
@@ -144,7 +135,7 @@
     "category": "contruccion"
   },
   {
-    "id": 18,
+    "id": 17,
     "name": "Cemento Portland",
     "description": "Cemento Portland bolsa de 50Kg",
     "price": 8.1,
@@ -153,7 +144,7 @@
     "category": "contruccion"
   },
   {
-    "id": 19,
+    "id": 18,
     "name": "Ladrillo cerámico 9 tubos",
     "description": "Ladrillo cerámico 9 tubos 18x18x33cm",
     "price": 8.1,
