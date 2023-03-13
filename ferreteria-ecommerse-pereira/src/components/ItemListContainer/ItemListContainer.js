@@ -12,8 +12,6 @@ import { useEffect } from "react";
 import { dataRequest } from "../../helpers/dataRequest";
 import ItemList from "../ItemList/ItemList";
 
-const MOCK_DATA = [];
-
 export const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
   const [loadingMsg, setLoadingMsg] = useState(true); // Primero False para no mostrar el mensaje de Loading
