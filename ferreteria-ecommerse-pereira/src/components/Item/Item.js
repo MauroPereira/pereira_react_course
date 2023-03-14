@@ -14,7 +14,7 @@ const Item = ({ item }) => {
       </p>
       <p>Cantidad: {item.stock}</p>
       <Button variant="contained">
-        <Link to={`/detail/${item.id}`} type="submit" variant="contained">
+        <Link to={`/detail/${item.id}`} style={{ textDecoration: "none" }}>
           Ver más
         </Link>
       </Button>
