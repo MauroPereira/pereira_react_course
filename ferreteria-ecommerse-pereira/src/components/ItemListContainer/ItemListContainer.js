@@ -54,32 +54,3 @@ export const ItemListContainer = ({ greeting }) => {
 };
 
 export default ItemListContainer;
-
-// export const ItemListContainerMui = () => {
-//   return (
-//     <div className="itemlistmui__container">
-//       <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-//         <nav aria-label="main mailbox folders">
-//           <List>
-//             <ListItem disablePadding>
-//               <ListItemButton>
-//                 <ListItemIcon>
-//                   <InboxIcon />
-//                 </ListItemIcon>
-//                 <ListItemText primary="Inbox" />
-//               </ListItemButton>
-//             </ListItem>
-//             <ListItem disablePadding>
-//               <ListItemButton>
-//                 <ListItemIcon>
-//                   <DraftsIcon />
-//                 </ListItemIcon>
-//                 <ListItemText primary="Drafts" />
-//               </ListItemButton>
-//             </ListItem>
-//           </List>
-//         </nav>
-//       </Box>
-//     </div>
-//   );
-// };
