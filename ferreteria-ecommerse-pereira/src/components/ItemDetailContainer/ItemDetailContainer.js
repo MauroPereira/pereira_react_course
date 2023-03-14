@@ -1,4 +1,5 @@
 import "./ItemDetailContainer.scss";
+import ItemDetail from "../ItemDetail/ItemDetail";
 import { dataRequestforId } from "../../helpers/dataRequest";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -6,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
-  const [Loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const { itemId } = useParams();
 
@@ -24,8 +25,13 @@ const ItemDetailContainer = () => {
 
   return (
     <div className="container">
-      <h2> Item Detail Container</h2>
+      <h2> Detalle de producto</h2>
       <hr />
+      {loading ? (
+        <h3>Cargando... Por favor espere</h3>
+      ) : (
+        <ItemDetail item={item} />
+      )}
     </div>
   );
 };
