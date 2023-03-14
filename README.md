@@ -109,3 +109,7 @@ Deberás desarrollar la navegabilidad básica de la aplicación, demostrando que
   - No usar HashRouter como en el ejemplo del gif (usar BrowserRouter)
   - Utilizar el id de la categoría como nombre en la URL param en vez de números (vehículos, por ej)
   - Utilizar el id del item como URL param
+
+### Versiones
+
+- v2.0: Incluye todo lo pedido para la entrega. La cotización de dolar se realiza consultando a la API https://dolarsi.com. Este dato se utilizará más adelante para generar las órdenes de compra.
