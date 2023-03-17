@@ -10,7 +10,7 @@ import DraftsIcon from "@mui/icons-material/Drafts";
 import { useState } from "react";
 import { useEffect } from "react";
 import { dataRequest } from "../../helpers/dataRequest";
-import ItemList from "../ItemList/ItemList";
+import { ItemList, ItemList2 } from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 
 export const ItemListContainer = ({ greeting }) => {
@@ -47,7 +47,7 @@ export const ItemListContainer = ({ greeting }) => {
       {loadingMsg ? (
         <h3>Cargando lista... Espere por favor</h3>
       ) : (
-        <ItemList items={products} />
+        <ItemList2 items={products} />
       )}
     </div>
   );
