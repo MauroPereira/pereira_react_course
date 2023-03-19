@@ -3,16 +3,22 @@
   width: 220px;
   margin-bottom: 10px;
   margin-bottom: 6px;
+  text-align: center;
 
   .box_item {
     img {
       padding-top: 2rem;
       height: 200px;
       width: 200px;
+    }
 
-      .itemDescription {
-        font-size: 1rem;
-      }
+    .itemDescription {
+      font-size: 1rem;
+    }
+
+    .button__container {
+      text-align: center;
+      margin-bottom: 10px;
     }
   }
 }

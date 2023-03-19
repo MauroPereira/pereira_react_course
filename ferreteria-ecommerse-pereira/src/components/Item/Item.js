@@ -17,11 +17,13 @@ export const Item = ({ item }) => {
           Precio: <strong>${item.price}</strong>
         </p>
         <p>Cantidad: {item.stock}</p>
-        <Button variant="contained">
-          <Link to={`/detail/${item.id}`} style={{ textDecoration: "none" }}>
-            Ver más
-          </Link>
-        </Button>
+        <div className="button__container">
+          <Button variant="contained">
+            <Link to={`/detail/${item.id}`} style={{ textDecoration: "none" }}>
+              Ver más
+            </Link>
+          </Button>
+        </div>
       </Box>
     </Paper>
   );
