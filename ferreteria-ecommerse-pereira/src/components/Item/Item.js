@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 export const Item = ({ item }) => {
   return (
     <Paper className="paper_item" elevation={6}>
-      <Box className="product_item">
+      <Box className="box_item">
         <img src={item.img} alt={item.name} />
         <h4>{item.name}</h4>
         <p className="itemDescription">{item.description}</p>
