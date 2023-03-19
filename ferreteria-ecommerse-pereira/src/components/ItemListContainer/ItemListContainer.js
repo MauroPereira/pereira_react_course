@@ -47,7 +47,7 @@ export const ItemListContainer = ({ greeting }) => {
       {loadingMsg ? (
         <h3>Cargando lista... Espere por favor</h3>
       ) : (
-        <ItemList2 items={products} />
+        <ItemList items={products} />
       )}
     </div>
   );
