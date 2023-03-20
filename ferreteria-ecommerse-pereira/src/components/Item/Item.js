@@ -11,12 +11,12 @@ export const Item = ({ item }) => {
     <Paper className="paper_item" elevation={6}>
       <Box className="box_item">
         <img src={item.img} alt={item.name} />
-        <h4>{item.name}</h4>
+        <h4 className="itemName">{item.name}</h4>
         <p className="itemDescription">{item.description}</p>
-        <p>
+        <p className="itemPrice">
           Precio: <strong>${item.price}</strong>
         </p>
-        <p>Cantidad: {item.stock}</p>
+        <p className="itemQuantity">Cantidad: {item.stock}</p>
         <div className="button__container">
           <Button variant="contained">
             <Link to={`/detail/${item.id}`} style={{ textDecoration: "none" }}>
