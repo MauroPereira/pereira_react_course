@@ -1,15 +1,43 @@
-.itemDescription {
-  font-size: 1rem;
-}
-.item_detail {
-  img {
-    padding-top: 2rem;
-    height: 220px;
+.item_detail__container {
+  padding-top: 5px;
+  display: flex;
+  justify-content: space-between;
+
+  .paper_item {
+    height: 415px;
     width: 220px;
-  }
-  p {
-    padding-top: 2px;
-    width: 220px;
-    font-size: 1rem;
+    margin-bottom: 10px;
+    margin-bottom: 6px;
+    text-align: center;
+
+    .box_item {
+      img {
+        padding-top: 2rem;
+        height: 200px;
+        width: 200px;
+      }
+
+      .itemName {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 1px;
+        padding-left: 1px;
+      }
+
+      .itemDescription {
+        font-size: 1rem;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .button__container {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+    }
   }
 }
