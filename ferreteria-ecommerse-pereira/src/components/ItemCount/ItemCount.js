@@ -2,20 +2,13 @@ import "./ItemCount.scss";
 import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-export const ItemCount = ({ item, quantity, setQuantity }) => {
+export const ItemCount = ({ item, quantity, setQuantity, handleAddToCart }) => {
   const handleAdd = () => {
     quantity < item.stock && setQuantity(quantity + 1);
   };
 
   const handleSubtract = () => {
     quantity > 1 && setQuantity(quantity - 1);
-  };
-
-  const handleAddToCart = () => {
-    const itemAddToCart = {
-      ...item,
-      quantity,
-    };
   };
 
   return (

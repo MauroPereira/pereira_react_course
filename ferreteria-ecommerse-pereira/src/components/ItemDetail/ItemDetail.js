@@ -15,6 +15,15 @@ const ItemDetail = ({ item }) => {
 
   const [quantity, setQuantity] = useState(1);
 
+  const handleAddToCart = () => {
+    const itemAddToCart = {
+      ...item,
+      quantity,
+    };
+
+    console.log(itemAddToCart);
+  };
+
   return (
     <div className="item_detail__container">
       <Paper className="paper_item" elevation={6}>
@@ -30,6 +39,7 @@ const ItemDetail = ({ item }) => {
             item={item}
             quantity={quantity}
             setQuantity={setQuantity}
+            handleAddToCart={handleAddToCart}
           />
           <Button
             className="volver__btn"
