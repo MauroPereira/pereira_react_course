@@ -16,7 +16,7 @@ export const Item = ({ item }) => {
         <p className="itemPrice">
           Precio: <strong>${item.price}</strong>
         </p>
-        <p className="itemQuantity">Cantidad: {item.stock}</p>
+        <p className="itemQuantity">Stock: {item.stock}</p>
         <div className="button__container">
           <Button variant="contained">
             <Link to={`/detail/${item.id}`} style={{ textDecoration: "none" }}>

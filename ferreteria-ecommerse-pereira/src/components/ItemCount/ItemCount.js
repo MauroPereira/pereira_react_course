@@ -13,12 +13,12 @@ export const ItemCount = () => {
 
   return (
     <div className="quantity__container">
-      <Button variant="item_count__btn" onClick={handleSubtract}>
-        -
-      </Button>
-      <span>Cantidad: {quantity}</span>
       <Button variant="item_count__btn" onClick={handleAdd}>
         +
+      </Button>
+      <p>Cantidad: {quantity}</p>
+      <Button variant="item_count__btn" onClick={handleSubtract}>
+        -
       </Button>
     </div>
   );

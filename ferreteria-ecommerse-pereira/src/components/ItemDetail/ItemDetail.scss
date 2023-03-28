@@ -1,10 +1,10 @@
 .item_detail__container {
-  padding-top: 5px;
+  padding-top: 10px;
   display: flex;
   justify-content: space-between;
 
   .paper_item {
-    height: 415px;
+    height: 470px;
     width: 220px;
     margin-bottom: 10px;
     margin-bottom: 6px;
@@ -34,9 +34,10 @@
         justify-content: center;
       }
 
-      .button__container {
+      .volver__btn {
         text-align: center;
-        margin-bottom: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
       }
     }
   }

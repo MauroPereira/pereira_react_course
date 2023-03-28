@@ -22,9 +22,13 @@ const ItemDetail = ({ item }) => {
           <p className="itemPrice">
             Precio: <strong>${item.price}</strong>
           </p>
-          <p className="itemQuantity">Cantidad: {item.stock}</p>
+          <p className="itemQuantity">Stock: {item.stock}</p>
           <ItemCount />
-          <Button variant="contained" onClick={handleReturn}>
+          <Button
+            className="volver__btn"
+            variant="contained"
+            onClick={handleReturn}
+          >
             Volver
           </Button>
         </Box>
