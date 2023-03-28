@@ -3,18 +3,23 @@ import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useState } from "react";
 
-export const ItemCount = ({ max }) => {
+export const ItemCount = ({ item }) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleAdd = () => {
-    quantity < max && setQuantity(quantity + 1);
+    quantity < item.stock && setQuantity(quantity + 1);
   };
 
   const handleSubtract = () => {
     quantity > 1 && setQuantity(quantity - 1);
   };
 
-  const handleAddToCart = () => {};
+  const handleAddToCart = () => {
+    const itemAddToCart = {
+      ...item,
+      quantity,
+    };
+  };
 
   return (
     <div className="quantity__container">
@@ -32,7 +37,6 @@ export const ItemCount = ({ max }) => {
         color="success"
         onClick={handleAddToCart}
       >
-        {" "}
         Agregar al carrito
       </Button>
     </div>
