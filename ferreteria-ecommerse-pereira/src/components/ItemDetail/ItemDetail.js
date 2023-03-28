@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { ItemCount } from "../ItemCount/ItemCount";
+import { useState } from "react";
 
 const ItemDetail = ({ item }) => {
   const navigate = useNavigate();
@@ -11,6 +12,8 @@ const ItemDetail = ({ item }) => {
   const handleReturn = () => {
     navigate(-1);
   };
+
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <div className="item_detail__container">
@@ -23,7 +26,11 @@ const ItemDetail = ({ item }) => {
             Precio: <strong>${item.price}</strong>
           </p>
           <p className="itemQuantity">Stock: {item.stock}</p>
-          <ItemCount item={item} />
+          <ItemCount
+            item={item}
+            quantity={quantity}
+            setQuantity={setQuantity}
+          />
           <Button
             className="volver__btn"
             variant="contained"

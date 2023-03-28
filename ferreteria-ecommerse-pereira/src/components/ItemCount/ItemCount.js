@@ -1,11 +1,8 @@
 import "./ItemCount.scss";
 import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { useState } from "react";
 
-export const ItemCount = ({ item }) => {
-  const [quantity, setQuantity] = useState(1);
-
+export const ItemCount = ({ item, quantity, setQuantity }) => {
   const handleAdd = () => {
     quantity < item.stock && setQuantity(quantity + 1);
   };
