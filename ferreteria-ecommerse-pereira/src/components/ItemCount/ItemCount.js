@@ -2,10 +2,12 @@ import "./ItemCount.scss";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 
-export const ItemCount = () => {
+export const ItemCount = ({ max }) => {
   const [quantity, setQuantity] = useState(1);
 
-  const handleAdd = () => setQuantity(quantity + 1);
+  const handleAdd = () => {
+    quantity < max && setQuantity(quantity + 1);
+  };
 
   const handleSubtract = () => {
     quantity > 1 && setQuantity(quantity - 1);

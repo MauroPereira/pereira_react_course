@@ -1,8 +1,6 @@
 import "./Item.scss";
 import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 

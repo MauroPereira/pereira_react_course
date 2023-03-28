@@ -23,7 +23,7 @@ const ItemDetail = ({ item }) => {
             Precio: <strong>${item.price}</strong>
           </p>
           <p className="itemQuantity">Stock: {item.stock}</p>
-          <ItemCount />
+          <ItemCount max={item.stock} />
           <Button
             className="volver__btn"
             variant="contained"

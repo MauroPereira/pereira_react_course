@@ -4,7 +4,7 @@
     "name": "Martillo",
     "description": "Martillo de cabeza de metal con mango de madera",
     "price": 2.5,
-    "stock": 20,
+    "stock": 11,
     "img": "https://i.postimg.cc/Z5Fk0tkK/martillo.jpg",
     "category": "herramientas"
   },
