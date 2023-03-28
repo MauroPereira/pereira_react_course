@@ -1,5 +1,6 @@
 import "./ItemCount.scss";
 import Button from "@mui/material/Button";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useState } from "react";
 
 export const ItemCount = ({ max }) => {
@@ -13,6 +14,8 @@ export const ItemCount = ({ max }) => {
     quantity > 1 && setQuantity(quantity - 1);
   };
 
+  const handleAddToCart = () => {};
+
   return (
     <div className="quantity__container">
       <Button variant="contained" onClick={handleAdd}>
@@ -21,6 +24,16 @@ export const ItemCount = ({ max }) => {
       <p>Cantidad: {quantity}</p>
       <Button variant="contained" onClick={handleSubtract}>
         -
+      </Button>
+      <Button
+        className="agregar_carrito__btn"
+        variant="contained"
+        startIcon={<AddShoppingCartIcon />}
+        color="success"
+        onClick={handleAddToCart}
+      >
+        {" "}
+        Agregar al carrito
       </Button>
     </div>
   );
