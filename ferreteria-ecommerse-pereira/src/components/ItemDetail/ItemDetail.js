@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
+import { ItemCount } from "../ItemCount/ItemCount";
 
 const ItemDetail = ({ item }) => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const ItemDetail = ({ item }) => {
             Precio: <strong>${item.price}</strong>
           </p>
           <p className="itemQuantity">Cantidad: {item.stock}</p>
+          <ItemCount />
           <Button variant="contained" onClick={handleReturn}>
             Volver
           </Button>

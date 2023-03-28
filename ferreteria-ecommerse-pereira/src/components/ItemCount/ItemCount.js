@@ -1,14 +1,23 @@
+import "./ItemCount.scss";
 import Button from "@mui/material/Button";
-
-const [quantity, setQuantity] = useState(1);
+import { useState } from "react";
 
 export const ItemCount = () => {
+  const [quantity, setQuantity] = useState(1);
+
+  const handleAdd = () => setQuantity(quantity + 1);
+
+  const handleSubtract = () => {
+    quantity > 1 && setQuantity(quantity - 1);
+  };
+
   return (
-    <div>
-      <Button variant="item_count__btn" onClick={handleReturn}>
+    <div className="quantity__container">
+      <Button variant="item_count__btn" onClick={handleSubtract}>
         -
       </Button>
-      <Button variant="item_count__btn" onClick={handleReturn}>
+      <span>Cantidad: {quantity}</span>
+      <Button variant="item_count__btn" onClick={handleAdd}>
         +
       </Button>
     </div>
