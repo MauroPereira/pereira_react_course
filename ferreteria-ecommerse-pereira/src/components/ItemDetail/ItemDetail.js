@@ -16,7 +16,7 @@ const ItemDetail = ({ item }) => {
   };
 
   const [quantity, setQuantity] = useState(1);
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, setCart, addToCart } = useContext(CartContext);
 
   const handleAddToCart = () => {
     const itemAddToCart = {
@@ -24,7 +24,7 @@ const ItemDetail = ({ item }) => {
       quantity,
     };
 
-    setCart([...cart, itemAddToCart]); // despliego cart y le agrego el nuevo item
+    addToCart([itemAddToCart], cart, setCart); // despliego cart y le agrego el nuevo item
   };
 
   return (

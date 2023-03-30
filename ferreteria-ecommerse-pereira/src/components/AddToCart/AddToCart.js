@@ -1,5 +1,3 @@
-import { CartContext } from "../../context/CartContext"
-
-const AddToCart = (item) => {
-    setCart([..cart, item])
-}
+export const addToCart = (item, cart, setCart) => {
+  setCart([...cart, item]);
+};
