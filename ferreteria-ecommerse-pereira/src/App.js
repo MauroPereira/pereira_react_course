@@ -12,16 +12,18 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { CartContext } from "./context/CartContext";
+import { useState } from "react";
 
 function App() {
-  const nombreDesarrollador = "Mauro Alejandro Pereira";
-  const emailDesarrollador = "mauro.a.pereira@gmail.com";
+  const [cart, setCart] = useState([]);
+
+  console.log(cart);
 
   return (
     <CartContext.Provider
       value={{
-        nombreDesarrollador,
-        emailDesarrollador,
+        cart,
+        setCart,
       }}
     >
       <BrowserRouter>

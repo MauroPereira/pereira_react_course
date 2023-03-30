@@ -5,6 +5,8 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { ItemCount } from "../ItemCount/ItemCount";
 import { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ item }) => {
   const navigate = useNavigate();
@@ -14,6 +16,7 @@ const ItemDetail = ({ item }) => {
   };
 
   const [quantity, setQuantity] = useState(1);
+  const { cart, setCart } = useContext(CartContext);
 
   const handleAddToCart = () => {
     const itemAddToCart = {
@@ -21,7 +24,7 @@ const ItemDetail = ({ item }) => {
       quantity,
     };
 
-    console.log(itemAddToCart);
+    setCart([...cart, itemAddToCart]); // despliego cart y le agrego el nuevo item
   };
 
   return (

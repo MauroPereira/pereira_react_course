@@ -4,13 +4,8 @@ import { useEffect } from "react";
 import { dataRequest } from "../../helpers/dataRequest";
 import { ItemList } from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
-import { CartContext } from "../../context/CartContext";
 
 export const ItemListContainer = ({ greeting }) => {
-  const { nombreDesarrollador, emailDesarrollador } = useContext(CartContext);
-  console.log(nombreDesarrollador);
-  console.log(emailDesarrollador);
-
   const [products, setProducts] = useState([]);
   const [loadingMsg, setLoadingMsg] = useState(true); // Primero False para no mostrar el mensaje de Loading
 
