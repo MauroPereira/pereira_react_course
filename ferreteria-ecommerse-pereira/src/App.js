@@ -1,10 +1,6 @@
 import "./App.css";
 import { Navbar } from "./components/Navbar/Navbar";
-import { Categories } from "./components/Categories/Categories";
-import {
-  ItemListContainer,
-  ItemListContainerMui,
-} from "./components/ItemListContainer/ItemListContainer";
+import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import { MainTitle } from "./components/MainTitle/MainTitle";
 import DolarsiApi from "./components/DolarsiApi/DolarsiApi";
@@ -15,69 +11,58 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import { CartContext } from "./context/CartContext";
 
 function App() {
+  const nombreDesarrollador = "Mauro Alejandro Pereira";
+  const emailDesarrollador = "mauro.a.pereira@gmail.com";
+
   return (
-    <BrowserRouter>
-      <Navbar />
-      <MainTitle />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              <DolarsiApi />
-              <ItemListContainer greeting="Productos" />
-            </div>
-          }
-        />
-        <Route
-          path="/productos/:categoryId"
-          element={
-            <div>
-              <DolarsiApi />
-              <ItemListContainer greeting="Productos" />
-            </div>
-          }
-        />
-        <Route
-          path="/detail/:itemId"
-          element={
-            <div>
-              <DolarsiApi />
-              <ItemDetailContainer greeting="Detalle de producto" />
-            </div>
-          }
-        />
-        <Route path="/nosotros" element={<AboutUs />} />
-        <Route path="/contacto" element={<Contact />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </BrowserRouter>
+    <CartContext.Provider
+      value={{
+        nombreDesarrollador,
+        emailDesarrollador,
+      }}
+    >
+      <BrowserRouter>
+        <Navbar />
+        <MainTitle />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div>
+                <DolarsiApi />
+                <ItemListContainer greeting="Productos" />
+              </div>
+            }
+          />
+          <Route
+            path="/productos/:categoryId"
+            element={
+              <div>
+                <DolarsiApi />
+                <ItemListContainer greeting="Productos" />
+              </div>
+            }
+          />
+          <Route
+            path="/detail/:itemId"
+            element={
+              <div>
+                <DolarsiApi />
+                <ItemDetailContainer greeting="Detalle de producto" />
+              </div>
+            }
+          />
+          <Route path="/nosotros" element={<AboutUs />} />
+          <Route path="/contacto" element={<Contact />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
 
-    // <BrowserRouter>
-    //   {/* Común a todos */}
-    //   <Navbar />
-
-    //   <Routes>
-    //     <Route
-    //       path="/"
-    //       element={
-    //         <di>
-    //           <MainTitle />
-    //           <ItemListContainer greeting="Grandes ofertas en" />
-    //         </di>
-    //       }
-    //     />
-
-    //     <Route path="/" element={<ItemListContainerMui />} />
-    //     <Route path="/categories" element={<Categories />} />
-    //     <Route path="/contacto" element={<Contacto />} />
-    //     <Route path="*" element={<Navigate to="/" />} />
-    //   </Routes>
-
-    //   {/* {<Footer />} */}
-    // </BrowserRouter>
+        {/* {<Footer />} */}
+      </BrowserRouter>
+    </CartContext.Provider>
   );
 }
 

@@ -1,19 +1,16 @@
 import "./ItemListContainer.scss";
-import Box from "@mui/material/Box";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/Inbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useEffect } from "react";
 import { dataRequest } from "../../helpers/dataRequest";
-import { ItemList, ItemList2 } from "../ItemList/ItemList";
+import { ItemList } from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 export const ItemListContainer = ({ greeting }) => {
+  const { nombreDesarrollador, emailDesarrollador } = useContext(CartContext);
+  console.log(nombreDesarrollador);
+  console.log(emailDesarrollador);
+
   const [products, setProducts] = useState([]);
   const [loadingMsg, setLoadingMsg] = useState(true); // Primero False para no mostrar el mensaje de Loading
 
