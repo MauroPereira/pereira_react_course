@@ -1,4 +1,8 @@
+const MySwal = withReactContent(Swal)
+
+
 export const addToCart = (itemToAdd, cart, setCart) => {
+  const MySwal = withReactContent(Swal);
   const duplicatedItem = cart.find((obj) => obj.id === itemToAdd.id);
   
   console.log(`Item a agregar:`);
@@ -8,8 +12,16 @@ export const addToCart = (itemToAdd, cart, setCart) => {
 
   if (duplicatedItem === undefined) {
     setCart([...cart, itemToAdd]);
-    console.log("Item agregado");
+    MySwal.fire({
+      title: <strong>Agregado el item</strong>,
+      html: <i>You clicked the button!</i>,
+      icon: 'success'
+    })
   } else {
-    console.log("Item duplicado, no se agrega");
+    MySwal.fire({
+      title: <strong>Item repetido</strong>,
+      html: <i>You clicked the button!</i>,
+      icon: 'error'
+    })
   }
 };
