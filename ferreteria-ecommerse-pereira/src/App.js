@@ -11,15 +11,12 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { CartContext } from "./context/CartContext";
-import { useState } from "react";
-import { addToCart } from "./components/AddToCart/AddToCart";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
-  const [cart, setCart] = useState([]);
 
-  return (
-    <CartContext.Provider value={{ cart, setCart, addToCart }}>
+  return (    
+    <CartProvider>
       <BrowserRouter>
         <Navbar />
         <MainTitle />
@@ -58,7 +55,7 @@ function App() {
 
         {/* {<Footer />} */}
       </BrowserRouter>
-    </CartContext.Provider>
+    </CartProvider>  
   );
 }
 
