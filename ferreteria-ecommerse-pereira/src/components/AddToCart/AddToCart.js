@@ -1,18 +1,18 @@
 import Swal from "sweetalert2";
 
-const successAlert = () => {
+const successAlert = (item) => {
   Swal.fire({  
-      title: 'Good job!',  
-      text: 'You clicked the button.',
+      title: 'Producto agregado al carrito',  
+      text: `${item.quantity} uni. de ${item.name}`,
       icon: 'success'
     }); 
 }
 
-const questionAlert = () => {
+const warningAlert = (item) => {
   Swal.fire({  
-      title: 'Do you have a problem to solve?!',  
-      text: 'Ask us on dirask',
-      icon: 'question'
+      title: 'Producto ya existente',  
+      text: `Se suman ${item.quantity} uni. de ${item.name}`,
+      icon: 'warning'
     }); 
 }
 
@@ -27,25 +27,10 @@ export const addToCart = (itemToAdd, cart, setCart) => {
   if (duplicatedItem === undefined) {
     setCart([...cart, itemToAdd]);
     console.log("Item agregado");
-    successAlert();
-
-    // const MySwal = withReactContent(Swal);
-    
-    // MySwal.fire({
-    //   title: <strong>Agregado el item</strong>,
-    //   html: <i>You clicked the button!</i>,
-    //   icon: "success",
-    // });
+    successAlert(itemToAdd);
 
   } else {
     console.log("Item duplicado, no agregado");
-    // const MySwal = withReactContent(Swal);
- 
-    // MySwal.fire({
-    //   title: <strong>Item repetido</strong>,
-    //   html: <i>You clicked the button!</i>,
-    //   icon: "error",
-    // });
-    // questionAlert();
+    warningAlert(itemToAdd);
   }
 };
