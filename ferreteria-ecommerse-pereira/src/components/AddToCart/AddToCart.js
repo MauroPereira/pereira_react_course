@@ -1,20 +1,20 @@
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
-// const successAlert = () => {
-//   Swal.fire({  
-//       title: 'Good job!',  
-//       text: 'You clicked the button.',
-//       icon: 'success'
-//     }); 
-// }
+const successAlert = () => {
+  Swal.fire({  
+      title: 'Good job!',  
+      text: 'You clicked the button.',
+      icon: 'success'
+    }); 
+}
 
-// const questionAlert = () => {
-//   Swal.fire({  
-//       title: 'Do you have a problem to solve?!',  
-//       text: 'Ask us on dirask',
-//       icon: 'question'
-//     }); 
-// }
+const questionAlert = () => {
+  Swal.fire({  
+      title: 'Do you have a problem to solve?!',  
+      text: 'Ask us on dirask',
+      icon: 'question'
+    }); 
+}
 
 export const addToCart = (itemToAdd, cart, setCart) => {
   const duplicatedItem = cart.find((obj) => obj.id === itemToAdd.id);
@@ -27,7 +27,7 @@ export const addToCart = (itemToAdd, cart, setCart) => {
   if (duplicatedItem === undefined) {
     setCart([...cart, itemToAdd]);
     console.log("Item agregado");
-    // successAlert();
+    successAlert();
 
     // const MySwal = withReactContent(Swal);
     
