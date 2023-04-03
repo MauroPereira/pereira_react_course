@@ -6,6 +6,7 @@ import { MainTitle } from "./components/MainTitle/MainTitle";
 import DolarsiApi from "./components/DolarsiApi/DolarsiApi";
 import AboutUs from "./components/AboutUs/AboutUs";
 import Contact from "./components/Contact/Contact";
+import { Cart } from "./components/Cart/Cart";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -14,8 +15,7 @@ import "@fontsource/roboto/700.css";
 import { CartProvider } from "./context/CartContext";
 
 function App() {
-
-  return (    
+  return (
     <CartProvider>
       <BrowserRouter>
         <Navbar />
@@ -50,12 +50,13 @@ function App() {
           />
           <Route path="/nosotros" element={<AboutUs />} />
           <Route path="/contacto" element={<Contact />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
 
         {/* {<Footer />} */}
       </BrowserRouter>
-    </CartProvider>  
+    </CartProvider>
   );
 }
 
