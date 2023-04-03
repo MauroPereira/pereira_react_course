@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 const successAlert = (item) => {
   Swal.fire({  
       title: 'Producto agregado al carrito',  
-      text: `${item.quantity} uni. de ${item.name}`,
+      text: `${item[0].quantity} uni. de ${item[0].name}`,
       icon: 'success'
     }); 
 }
@@ -11,26 +11,22 @@ const successAlert = (item) => {
 const warningAlert = (item) => {
   Swal.fire({  
       title: 'Producto ya existente',  
-      text: `Se suman ${item.quantity} uni. de ${item.name}`,
+      text: `Se suman ${item[0].quantity} uni. de ${item[0].name}`,
       icon: 'warning'
     }); 
 }
 
 export const addToCart = (itemToAdd, cart, setCart) => {
-  const duplicatedItem = cart.find((obj) => obj.id === itemToAdd.id);
-
-  console.log(`Item a agregar:`);
-  console.log(itemToAdd);
-  console.log(`Item a agregar:`);
-  console.log(duplicatedItem);
+  // ItemToAdd es un arreglo de un objeto, por eso es necesario 
+  // agregarle el indice  
+  const duplicatedItem = cart.find((obj) => obj.id === itemToAdd[0].id);
 
   if (duplicatedItem === undefined) {
-    setCart([...cart, itemToAdd]);
-    console.log("Item agregado");
+    setCart([...cart, itemToAdd[0]]);
     successAlert(itemToAdd);
 
   } else {
-    console.log("Item duplicado, no agregado");
-    warningAlert(itemToAdd);
+    warningAlert(itemToAdd);    
   }
+
 };
