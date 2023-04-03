@@ -18,10 +18,6 @@ import { addToCart } from "./components/AddToCart/AddToCart";
 function App() {
   const [cart, setCart] = useState([]);
 
-  console.log("Carrito: --")
-  console.log(cart);
-  console.log("-----------");
-
   return (
     <CartContext.Provider value={{ cart, setCart, addToCart }}>
       <BrowserRouter>

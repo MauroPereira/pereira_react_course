@@ -8,10 +8,18 @@ const successAlert = (item) => {
     }); 
 }
 
-const warningAlert = (item) => {
+const warningAlertPro = (item) => {
   Swal.fire({  
       title: 'Producto ya existente',  
       text: `Se suman ${item[0].quantity} uni. de ${item[0].name}`,
+      icon: 'warning'
+    }); 
+}
+
+const warningAlert = (item) => {
+  Swal.fire({  
+      title: 'No se puede agregar el producto',  
+      text: `Ya existen ${item.quantity} uni. de ${item.name} en el carrito`,
       icon: 'warning'
     }); 
 }
@@ -26,7 +34,7 @@ export const addToCart = (itemToAdd, cart, setCart) => {
     successAlert(itemToAdd);
 
   } else {
-    warningAlert(itemToAdd);    
+    warningAlert(duplicatedItem);    
   }
 
 };
