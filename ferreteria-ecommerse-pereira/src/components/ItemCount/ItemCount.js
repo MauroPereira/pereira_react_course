@@ -18,7 +18,7 @@ export const ItemCount = ({ item, quantity, setQuantity, handleAddToCart }) => {
     <div className="quantity__container">
       <Button
         variant="contained"
-        disabled={item.stock === 0}
+        disabled={item.stock === 0 || quantity === item.stock}
         onClick={handleAdd}
       >
         +
@@ -26,7 +26,7 @@ export const ItemCount = ({ item, quantity, setQuantity, handleAddToCart }) => {
       <p>Cantidad: {quantity}</p>
       <Button
         variant="contained"
-        disabled={item.stock === 0}
+        disabled={item.stock === 0 || quantity === 1}
         onClick={handleSubtract}
       >
         -
