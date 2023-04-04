@@ -37,7 +37,16 @@ const ItemDetail = ({ item }) => {
           <p className="itemPrice">
             Precio: <strong>${item.price}</strong>
           </p>
-          <p className="itemQuantity">Stock: {item.stock}</p>
+
+          {/* Aplicación de técnica de renderizado */}
+          {item.stock === 0 ? (
+            <p className="itemQuantity">
+              <strong>Sin stock!</strong>
+            </p>
+          ) : (
+            <p className="itemQuantity">Stock: {item.stock}</p>
+          )}
+
           <ItemCount
             item={item}
             quantity={quantity}
