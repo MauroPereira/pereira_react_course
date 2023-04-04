@@ -50,7 +50,15 @@ function App() {
           />
           <Route path="/nosotros" element={<AboutUs />} />
           <Route path="/contacto" element={<Contact />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={
+              <div>
+                <DolarsiApi />
+                <Cart />
+              </div>
+            }
+          />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
 
