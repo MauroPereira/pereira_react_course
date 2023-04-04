@@ -24,6 +24,24 @@ export const Cart = () => {
     navigate(-1);
   };
 
+  // Aplicación de técnica de renderizado
+  if (cart.length === 0) {
+    return (
+      <div className="cart__container">
+        <h2>Tu carrito de compras está vacío</h2>
+        <hr />
+        <Button
+          className="volver__btn"
+          variant="contained"
+          startIcon={<ArrowBackIcon />}
+          onClick={handleReturn}
+        >
+          Volver
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <div className="cart__container">
       <h2>Carrito de compras</h2>
