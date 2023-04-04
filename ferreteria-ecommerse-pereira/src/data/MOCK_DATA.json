@@ -22,7 +22,7 @@
     "name": "Serrucho",
     "description": "Serrucho de mango de madera",
     "price": 2.8,
-    "stock": 20,
+    "stock": 1,
     "img": "https://i.postimg.cc/mr80NY2v/serucho.jpg",
     "category": "herramientas"
   },
@@ -31,7 +31,7 @@
     "name": "Sierra en arco",
     "description": "Sierra en arco para metal duro con mango de plástico",
     "price": 8.0,
-    "stock": 20,
+    "stock": 5,
     "img": "https://i.postimg.cc/RFYy2vtG/sierra-en-arco-para-metal.jpg",
     "category": "herramientas"
   },
@@ -40,7 +40,7 @@
     "name": "Tenaza",
     "description": "Tenaza larga",
     "price": 7.6,
-    "stock": 20,
+    "stock": 3,
     "img": "https://i.postimg.cc/nzrNdXXC/tenaza.jpg",
     "category": "herramientas"
   },

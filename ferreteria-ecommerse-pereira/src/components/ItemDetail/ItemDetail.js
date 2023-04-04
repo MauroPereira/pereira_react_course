@@ -43,6 +43,16 @@ const ItemDetail = ({ item }) => {
             <p className="itemQuantity">
               <strong>Sin stock!</strong>
             </p>
+          ) : item.stock === 1 ? (
+            <p className="itemQuantity">
+              <strong>Sólo 1 unidad en Stock</strong>
+            </p>
+          ) : item.stock <= 5 ? (
+            <p className="itemQuantity">
+              <strong className="strong_stock_chicho">
+                Sólo {item.stock} unidades en Stock
+              </strong>
+            </p>
           ) : (
             <p className="itemQuantity">Stock: {item.stock}</p>
           )}
