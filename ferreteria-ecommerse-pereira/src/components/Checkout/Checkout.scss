@@ -1,0 +1,25 @@
+.checkout__container {
+  margin: 40px auto;
+  max-width: 900px;
+  color: lightcyan;
+  font-size: 1.2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  h3 {
+    padding-top: 15px;
+    padding-bottom: 25px;
+    text-align: end;
+    max-width: 360px;
+  }
+
+  hr {
+    margin-bottom: 10px;
+  }
+  .list_item_text {
+    color: black;
+  }
+
+  .borrar_carrito__btn {
+    margin-left: 75px;
+  }
+}
