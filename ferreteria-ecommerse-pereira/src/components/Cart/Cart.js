@@ -1,7 +1,7 @@
 import "./Cart.scss";
 import React from "react";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
@@ -15,6 +15,7 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 
 export const Cart = () => {
   const { cart, totalPrice, eraseCart, eraseItemFromCart } =
@@ -49,7 +50,7 @@ export const Cart = () => {
 
       {cart.map((prod) => (
         <List
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+          sx={{ width: "100%", maxWidth: 400, bgcolor: "background.paper" }}
         >
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
@@ -85,8 +86,30 @@ export const Cart = () => {
           <Divider variant="inset" component="li" />
         </List>
       ))}
-      <h3>Total: $ {totalPrice().toFixed(3)}</h3>
 
+      <h3 className="total__h3">Total: $ {totalPrice().toFixed(3)}</h3>
+
+      <div className="btns_container">
+        <Button
+          className="borrar_carrito__btn"
+          variant="contained"
+          startIcon={<RemoveShoppingCartIcon />}
+          color="error"
+          onClick={eraseCart}
+        >
+          Borrar carrito
+        </Button>
+
+        <Link to="/checkout" className="checkout_link">
+          <Button
+            variant="contained"
+            startIcon={<ShoppingCartCheckoutIcon />}
+            color="success"
+          >
+            Finalizar compra
+          </Button>
+        </Link>
+      </div>
       <Button
         className="volver__btn"
         variant="contained"
@@ -94,16 +117,6 @@ export const Cart = () => {
         onClick={handleReturn}
       >
         Volver
-      </Button>
-
-      <Button
-        className="borrar_carrito__btn"
-        variant="contained"
-        startIcon={<RemoveShoppingCartIcon />}
-        color="error"
-        onClick={eraseCart}
-      >
-        Borrar carrito
       </Button>
     </div>
   );

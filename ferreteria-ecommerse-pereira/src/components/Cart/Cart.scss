@@ -5,21 +5,32 @@
   font-size: 1.2rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
-  h3 {
-    padding-top: 15px;
-    padding-bottom: 25px;
-    text-align: end;
-    max-width: 360px;
-  }
-
   hr {
     margin-bottom: 10px;
   }
+
+  h3 {
+    max-width: 400px;
+    text-align: end;
+    padding-top: 20px;
+    padding-bottom: 25px;
+  }
+
   .list_item_text {
     color: black;
   }
 
-  .borrar_carrito__btn {
-    margin-left: 75px;
+  .btns_container {
+    max-width: 400px;
+    display: flex;
+    justify-content: space-between;
+
+    .checkout_link {
+      text-decoration: none;
+    }
+  }
+
+  .volver__btn {
+    margin-top: 20px;
   }
 }

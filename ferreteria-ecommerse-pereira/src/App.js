@@ -14,7 +14,6 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { CartProvider } from "./context/CartContext";
-import { Checkbox } from "@mui/material";
 
 function App() {
   return (
