@@ -1,10 +1,9 @@
 import "./ItemListContainer.scss";
 import { useContext, useState } from "react";
 import { useEffect } from "react";
-import { dataRequest } from "../../helpers/dataRequest";
 import { ItemList } from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
 
 export const ItemListContainer = ({ greeting }) => {
@@ -20,8 +19,12 @@ export const ItemListContainer = ({ greeting }) => {
     // 1 - Referencia (sync)
     const productsRef = collection(db, "productos");
 
+    const productsQuery = categoryId
+      ? query(productsRef, where("category", "==", categoryId))
+      : productsRef;
+
     // 2 - Pedido de referencia (async)
-    getDocs(productsRef)
+    getDocs(productsQuery)
       .then((resp) => {
         const docs = resp.docs.map((doc) => {
           return { ...doc.data(), id: doc.id };
