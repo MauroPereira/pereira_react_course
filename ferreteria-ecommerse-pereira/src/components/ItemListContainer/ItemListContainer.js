@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { dataRequest } from "../../helpers/dataRequest";
 import { ItemList } from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase/config";
 
 export const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
@@ -15,13 +17,16 @@ export const ItemListContainer = ({ greeting }) => {
   useEffect(() => {
     setLoadingMsg(true); // asi muestra el cartel de cargando
 
-    dataRequest()
-      .then((response) => {
-        if (!categoryId) {
-          setProducts(response);
-        } else {
-          setProducts(response.filter((prod) => prod.category === categoryId));
-        }
+    // 1 - Referencia (sync)
+    const productsRef = collection(db, "productos");
+
+    // 2 - Pedido de referencia (async)
+    getDocs(productsRef)
+      .then((resp) => {
+        const docs = resp.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        });
+        setProducts(docs);
       })
       .catch((error) => {
         console.log(error); // se imprime si ha ocurrido un error

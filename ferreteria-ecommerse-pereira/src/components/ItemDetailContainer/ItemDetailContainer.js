@@ -1,9 +1,10 @@
 import "./ItemDetailContainer.scss";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import { dataRequestforId } from "../../helpers/dataRequest";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase/config";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
@@ -14,10 +15,12 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     setLoading(true);
 
-    dataRequestforId(Number(itemId))
-      .then((resp) => {
-        setItem(resp);
-      })
+    // 1 - Referencia (sync)
+    const docRef = doc(db, "productos", itemId);
+
+    // 2 - Pedido de referencia (async)
+    getDoc(docRef)
+      .then((doc) => setItem({ id: doc.id, ...doc.data() }))
       .finally(() => {
         setLoading(false);
       });
