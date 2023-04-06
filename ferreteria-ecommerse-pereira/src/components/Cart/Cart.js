@@ -50,6 +50,7 @@ export const Cart = () => {
 
       {cart.map((prod) => (
         <List
+          key={prod.id}
           sx={{ width: "100%", maxWidth: 400, bgcolor: "background.paper" }}
         >
           <ListItem alignItems="flex-start">
