@@ -76,7 +76,7 @@ export const Cart = () => {
               }
             />
             <IconButton
-              edge="center"
+              edge="start"
               onClick={() => eraseItemFromCart(prod.id)}
               aria-label="delete"
               color="error"
