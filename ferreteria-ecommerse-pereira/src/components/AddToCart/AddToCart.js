@@ -8,14 +8,6 @@ const successAlert = (item) => {
   });
 };
 
-// const warningAlertPro = (item) => {
-//   Swal.fire({
-//       title: 'Producto ya existente',
-//       text: `Se suman ${item[0].quantity} uni. de ${item[0].name}`,
-//       icon: 'warning'
-//     });
-// }
-
 const warningAlert = (item) => {
   Swal.fire({
     title: "No se puede agregar el producto",

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import InputIcon from "@mui/icons-material/Input";
-import { Formik } from "formik";
+// import { Formik } from "formik";
 import { useState } from "react";
 
 export const Checkout = () => {
@@ -37,24 +37,6 @@ export const Checkout = () => {
     <div className="checkout__container">
       <h2>Checkout</h2>
       <hr />
-      {/* ////// Formulario */}
-      {/* <Formik
-        initialValues={{
-          firstNames: "",
-          apellido: "",
-          address: "",
-          email: "",
-          contactNumber: "",
-        }}
-        onSubmit={(values) => {
-          console.log(values);
-        }}
-      >
-        {() => (
-         
-        )}
-      </Formik> */}
-      {/* ///////////////// */}
       <div className="form__container" onSubmit={handleSubmit}>
         <form>
           <label>
@@ -65,7 +47,7 @@ export const Checkout = () => {
               type={"text"}
               placeholder="Tus nombres"
               required
-              name="firstName"
+              name="firstNames"
             />{" "}
           </label>
           <br></br>
@@ -77,7 +59,7 @@ export const Checkout = () => {
               type={"text"}
               placeholder="Tus apellidos"
               required
-              name="lastName"
+              name="lastNames"
             />
           </label>
           <br></br>
