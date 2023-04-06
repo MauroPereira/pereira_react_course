@@ -19,7 +19,17 @@
     color: black;
   }
 
-  .borrar_carrito__btn {
-    margin-left: 75px;
+  .form__container {
+    max-width: 600px;
+    display: flex;
+    text-align: right;
+    justify-content: space-between;
+
+    .submit_btn__container {
+      padding-top: 10px;
+    }
+  }
+  .volver_btn__container {
+    padding-top: 20px;
   }
 }
