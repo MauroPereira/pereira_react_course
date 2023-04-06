@@ -48,45 +48,46 @@ export const Cart = () => {
       <h2>Carrito de compras</h2>
       <hr />
 
-      {cart.map((prod) => (
-        <List
-          key={prod.id}
-          sx={{ width: "100%", maxWidth: 400, bgcolor: "background.paper" }}
-        >
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <Avatar alt={prod.name} src={prod.img} />
-            </ListItemAvatar>
-            <ListItemText
-              className="list_item_text"
-              primary={prod.name}
-              secondary={
-                <React.Fragment>
-                  <Typography
-                    sx={{ display: "inline" }}
-                    component="span"
-                    variant="body2"
-                    color="text.primary"
-                  >
-                    Precio por unidad: ${prod.price}
-                  </Typography>
-                  <p>Cantidad: {prod.quantity} </p>
-                  Subtotal: ${(prod.price * prod.quantity).toFixed(3)}
-                </React.Fragment>
-              }
-            />
-            <IconButton
-              edge="start"
-              onClick={() => eraseItemFromCart(prod.id)}
-              aria-label="delete"
-              color="error"
-            >
-              <DeleteIcon />
-            </IconButton>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-        </List>
-      ))}
+      <List sx={{ width: "100%", maxWidth: 400, bgcolor: "background.paper" }}>
+        {cart.map((prod) => (
+          <div key={prod.id}>
+            <ListItem alignItems="flex-start">
+              <ListItemAvatar>
+                <Avatar alt={prod.name} src={prod.img} />
+              </ListItemAvatar>
+              <ListItemText
+                className="list_item_text"
+                primary={prod.name}
+                secondary={
+                  <React.Fragment>
+                    <Typography
+                      sx={{ display: "inline" }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      Precio por unidad: ${prod.price}
+                    </Typography>
+                    <br></br>
+                    Cantidad: {prod.quantity}
+                    <br></br>
+                    Subtotal: ${(prod.price * prod.quantity).toFixed(3)}
+                  </React.Fragment>
+                }
+              />
+              <IconButton
+                edge="start"
+                onClick={() => eraseItemFromCart(prod.id)}
+                aria-label="delete"
+                color="error"
+              >
+                <DeleteIcon />
+              </IconButton>
+            </ListItem>
+            <Divider variant="inset" component="li" />
+          </div>
+        ))}
+      </List>
 
       <h3 className="total__h3">Total: $ {totalPrice().toFixed(3)}</h3>
 
