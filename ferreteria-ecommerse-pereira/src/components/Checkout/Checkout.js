@@ -4,13 +4,25 @@ import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import InputIcon from "@mui/icons-material/Input";
 // import { Formik } from "formik";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../../context/CartContext";
+import Swal from "sweetalert2";
+
+const SuccessPurchase = (order) => {
+  Swal.fire({
+    title: "Gracias por tu compra",
+    text: `${order.client.firstNames} ${order.client.lastNames} tu pedido está siendo preparado. Pronto recibirás más información a ${order.client.email} `,
+    icon: "success",
+  });
+};
 
 export const Checkout = () => {
   const navigate = useNavigate();
   const handleReturn = () => {
     navigate(-1);
   };
+
+  const { cart, totalPrice } = useContext(CartContext);
 
   const [values, setValues] = useState({
     firstNames: "",
@@ -22,8 +34,17 @@ export const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Validaciones
 
-    console.log("Submit", values);
+    const order = {
+      client: values,
+      items: cart,
+      finalPrice: totalPrice(),
+      date: new Date(),
+    };
+
+    console.log("Submit", order);
+    SuccessPurchase(order);
   };
 
   const handeInputChange = (el) => {
