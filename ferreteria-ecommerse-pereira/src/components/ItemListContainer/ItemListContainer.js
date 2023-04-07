@@ -5,6 +5,15 @@ import { ItemList } from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../firebase/config";
+import Swal from "sweetalert2";
+
+const warningAlert = (title, msg) => {
+  Swal.fire({
+    title: title,
+    text: msg,
+    icon: "warning",
+  });
+};
 
 export const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
@@ -32,7 +41,7 @@ export const ItemListContainer = ({ greeting }) => {
         setProducts(docs);
       })
       .catch((error) => {
-        console.log(error); // se imprime si ha ocurrido un error
+        warningAlert("Ha ocurrido un error!", error);
       })
       .finally(() => {
         setLoadingMsg(false); // para asegurarse que no se muestre el mensaje de Loading

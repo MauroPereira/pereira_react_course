@@ -3,16 +3,34 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import InputIcon from "@mui/icons-material/Input";
-// import { Formik } from "formik";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import Swal from "sweetalert2";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../firebase/config";
+// import { Formik } from "formik";
 
-const SuccessPurchase = (order) => {
+const SuccessPurchaseMsg = (order, id) => {
   Swal.fire({
     title: "Gracias por tu compra",
-    text: `${order.client.firstNames} ${order.client.lastNames} tu pedido está siendo preparado. Pronto recibirás más información a ${order.client.email} `,
+    text: `${order.client.firstNames} ${order.client.lastNames} tu pedido con código ${id} está siendo preparado. Pronto recibirás más información a ${order.client.email}.`,
     icon: "success",
+  });
+};
+
+const WaitingPurchaseMsg = (order) => {
+  Swal.fire({
+    title: "Espere por favor...",
+    text: `${order.client.firstNames} ${order.client.lastNames} su orden está siendo procesada`,
+    icon: "warning",
+  });
+};
+
+const ErrorPurchaseMsg = (order) => {
+  Swal.fire({
+    title: "No se pudo llevar a cabo su compra!",
+    text: `Lo sentimos ${order.client.firstNames} ${order.client.lastNames}, por favor comuniquese a +543512546109 para realizar la compra telefónicamente.`,
+    icon: "error",
   });
 };
 
@@ -36,6 +54,7 @@ export const Checkout = () => {
     e.preventDefault();
     // TODO: validaciones
 
+    // Creación de objeto order
     const order = {
       client: values,
       items: cart,
@@ -43,10 +62,21 @@ export const Checkout = () => {
       date: new Date(),
     };
 
-    console.log("Submit", order);
-    SuccessPurchase(order);
-    // TODO: actualizar stock
-    eraseCart();
+    WaitingPurchaseMsg(order);
+
+    // Sync
+    const orderRef = collection(db, "orders");
+
+    // Async
+    addDoc(orderRef, order)
+      .then((doc) => {
+        SuccessPurchaseMsg(order, doc.id);
+        eraseCart();
+        // TODO: actualizar stock
+      })
+      .catch((error) => {
+        ErrorPurchaseMsg("Ha ocurrido un error!", order);
+      });
   };
 
   const handeInputChange = (el) => {
