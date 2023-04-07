@@ -1,5 +1,5 @@
 import "./Checkout.scss";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import InputIcon from "@mui/icons-material/Input";
@@ -22,7 +22,7 @@ export const Checkout = () => {
     navigate(-1);
   };
 
-  const { cart, totalPrice } = useContext(CartContext);
+  const { cart, totalPrice, eraseCart } = useContext(CartContext);
 
   const [values, setValues] = useState({
     firstNames: "",
@@ -34,7 +34,7 @@ export const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Validaciones
+    // TODO: validaciones
 
     const order = {
       client: values,
@@ -45,6 +45,8 @@ export const Checkout = () => {
 
     console.log("Submit", order);
     SuccessPurchase(order);
+    // TODO: actualizar stock
+    eraseCart();
   };
 
   const handeInputChange = (el) => {
@@ -53,6 +55,11 @@ export const Checkout = () => {
       [el.target.name]: el.target.value,
     });
   };
+
+  // Evita entrar al Checkout sin items en el carrito
+  if (cart.length === 0) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className="checkout__container">
