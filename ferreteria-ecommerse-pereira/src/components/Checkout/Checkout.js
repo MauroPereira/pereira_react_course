@@ -6,7 +6,7 @@ import InputIcon from "@mui/icons-material/Input";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import Swal from "sweetalert2";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
 // import { Formik } from "formik";
 
@@ -66,14 +66,31 @@ export const Checkout = () => {
     WaitingPurchaseMsg(order);
 
     // Sync
-    const orderRef = collection(db, "orders");
+    const ordersRef = collection(db, "orders");
+    const productsRef = collection(db, "productos");
 
     // Async
-    addDoc(orderRef, order)
+    addDoc(ordersRef, order)
       .then((doc) => {
         SuccessPurchaseMsg(order, doc.id);
+
+        // // Actualización de stock
+        // cart.forEach((item) => {
+        //   const docRef = doc(productsRef, item.id); // para tener actualizado el stock que existe al momento de descontarlo, en caso de que otro usuario lo haya consumido
+
+        //   // Se trae el documento, se modifica el stock del mismo y se actualiza el documento
+        //   getDoc(docRef).then((doc) => {
+        //     updateDoc(docRef, {
+        //       stock: doc.data().stock - item.quantity,
+        //     });
+        //   });
+        //   // .catch((error) => {
+        //   //   ErrorPurchaseMsg("Ha ocurrido un error!", order);
+        //   // });
+        // });
+
+        // Se borra el carrito
         eraseCart();
-        // TODO: actualizar stock
       })
       .catch((error) => {
         ErrorPurchaseMsg("Ha ocurrido un error!", order);
