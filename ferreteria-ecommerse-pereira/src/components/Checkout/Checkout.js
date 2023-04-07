@@ -23,13 +23,14 @@ const WaitingPurchaseMsg = (order) => {
     title: "Espere por favor...",
     text: `${order.client.firstNames} ${order.client.lastNames} su orden está siendo procesada`,
     icon: "warning",
+    showConfirmButton: false,
   });
 };
 
 const ErrorPurchaseMsg = (order) => {
   Swal.fire({
     title: "No se pudo llevar a cabo su compra!",
-    text: `Lo sentimos ${order.client.firstNames} ${order.client.lastNames}, por favor comuniquese a +543512546109 para realizar la compra telefónicamente.`,
+    text: `Lo sentimos ${order.client.firstNames} ${order.client.lastNames}, por favor comuníquese a +543512546109 para realizar la compra telefónicamente.`,
     icon: "error",
   });
 };
