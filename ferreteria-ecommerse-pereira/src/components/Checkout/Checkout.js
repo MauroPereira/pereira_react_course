@@ -35,6 +35,14 @@ const ErrorPurchaseMsg = (order) => {
   });
 };
 
+const NoStockPurchaseMsg = (order) => {
+  Swal.fire({
+    title: "No se pudo llevar a cabo su compra!",
+    text: `Lo sentimos ${order.client.firstNames} ${order.client.lastNames}, no hay suficiente stock para su compra.`,
+    icon: "error",
+  });
+};
+
 export const Checkout = () => {
   const navigate = useNavigate();
   const handleReturn = () => {
@@ -76,27 +84,32 @@ export const Checkout = () => {
       // Se trae el documento, se modifica el stock del mismo y se actualiza el documento
       getDoc(docRef)
         .then((doc) => {
-          updateDoc(docRef, {
-            stock: doc.data().stock - item.quantity,
-          });
+          if (doc.data().stock >= item.quantity) {
+            // si el pedido no supera al stock actual
+            updateDoc(docRef, {
+              stock: doc.data().stock - item.quantity,
+            });
 
-          SuccessPurchaseMsg(order, doc.id);
+            SuccessPurchaseMsg(order, doc.id);
+          } else {
+            NoStockPurchaseMsg(order);
+          }
         })
         .catch((error) => {
           ErrorPurchaseMsg("Ha ocurrido un error!", order);
         });
     });
 
-    // // Creación de orden asíncrono
-    // addDoc(ordersRef, order)
-    //   .then((doc) => {
-    //     SuccessPurchaseMsg(order, doc.id);
-    //     // Se borra el carrito
-    //     eraseCart();
-    //   })
-    //   .catch((error) => {
-    //     ErrorPurchaseMsg("Ha ocurrido un error!", order);
-    //   });
+    // Creación de orden asíncrono
+    addDoc(ordersRef, order)
+      .then((doc) => {
+        SuccessPurchaseMsg(order, doc.id);
+        // Se borra el carrito
+        eraseCart();
+      })
+      .catch((error) => {
+        ErrorPurchaseMsg("Ha ocurrido un error!", order);
+      });
   };
 
   const handeInputChange = (el) => {
