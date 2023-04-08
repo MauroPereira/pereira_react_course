@@ -16,11 +16,11 @@ export const Item = ({ item }) => {
         </p>
         <p className="itemQuantity">Stock: {item.stock}</p>
         <div className="button__container">
-          <Button variant="contained">
-            <Link to={`/detail/${item.id}`} style={{ textDecoration: "none" }}>
+          <Link to={`/detail/${item.id}`}>
+            <Button style={"text-decoration: none"} variant="contained">
               Ver más
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
       </Box>
     </Paper>
