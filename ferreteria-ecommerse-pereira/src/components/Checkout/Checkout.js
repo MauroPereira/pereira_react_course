@@ -116,7 +116,7 @@ export const Checkout = () => {
 
     if (itemsWithoutStockRequired.length === 0)
       await batch.commit(); // actualiza Firestore en base a las intrucciones anteriores
-    else NoStockPurchaseMsg(order, itemList); // llama a mostrar un mensaje con todos los items sin suficiente stock
+    else NoStockPurchaseMsg(order, itemsWithoutStockRequired); // llama a mostrar un mensaje con todos los items sin suficiente stock
 
     /////////////////////////////
     // // Creación de orden async
