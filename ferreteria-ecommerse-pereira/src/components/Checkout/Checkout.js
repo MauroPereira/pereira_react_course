@@ -6,7 +6,14 @@ import InputIcon from "@mui/icons-material/Input";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import Swal from "sweetalert2";
-import { collection, addDoc, updateDoc, getDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  writeBatch,
+  where,
+  documentId,
+  query,
+} from "firebase/firestore";
 import { db } from "../../firebase/config";
 // import { Formik } from "formik";
 
@@ -35,10 +42,12 @@ const ErrorPurchaseMsg = (order) => {
   });
 };
 
-const NoStockPurchaseMsg = (order) => {
+const NoStockPurchaseMsg = (order, itemList) => {
   Swal.fire({
     title: "No se pudo llevar a cabo su compra!",
-    text: `Lo sentimos ${order.client.firstNames} ${order.client.lastNames}, no hay suficiente stock para su compra.`,
+    text: `Lo sentimos ${order.client.firstNames} ${
+      order.client.lastNames
+    }, no hay suficiente stock de ${itemList.join(", ")} para su compra.`,
     icon: "error",
   });
 };
@@ -59,7 +68,9 @@ export const Checkout = () => {
     contactNumber: "",
   });
 
-  const handleSubmit = (e) => {
+  const itemsWithoutStockRequired = [];
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // TODO: validaciones
 
@@ -71,45 +82,54 @@ export const Checkout = () => {
       date: new Date(),
     };
 
+    const itemsWithoutStockRequired = [];
+
     WaitingPurchaseMsg(order);
 
-    // Sync
-    const ordersRef = collection(db, "orders");
+    // sync
+    const batch = writeBatch(db);
     const productsRef = collection(db, "productos");
+    const ordersRef = collection(db, "orders");
 
-    // Actualización de stock asíncrona
-    cart.forEach((item) => {
-      const docRef = doc(productsRef, item.id); // para tener actualizado el stock que existe al momento de descontarlo, en caso de que otro usuario lo haya consumido
+    // Actualización de stock async
+    const itemsRef = query(
+      productsRef,
+      where(
+        documentId(),
+        "in",
+        cart.map((prod) => prod.id)
+      )
+    ); // se obtiene la referencia a los items
 
-      // Se trae el documento, se modifica el stock del mismo y se actualiza el documento
-      getDoc(docRef)
-        .then((doc) => {
-          if (doc.data().stock >= item.quantity) {
-            // si el pedido no supera al stock actual
-            updateDoc(docRef, {
-              stock: doc.data().stock - item.quantity,
-            });
+    const response = await getDocs(itemsRef);
 
-            SuccessPurchaseMsg(order, doc.id);
-          } else {
-            NoStockPurchaseMsg(order);
-          }
-        })
-        .catch((error) => {
-          ErrorPurchaseMsg("Ha ocurrido un error!", order);
-        });
+    response.docs.forEach((doc) => {
+      const item = cart.find((prod) => prod.id === doc.id); // se busca su paralelo en el carrito
+
+      if (doc.data().stock >= item.cantidad) {
+        // se chequea que haya suficiente stock para el pedido
+        batch.update(doc.ref, { stock: doc.data.stock - item.cantidad });
+      } else {
+        itemsWithoutStockRequired.push(item.name); // se crea una lista de los nombres de los items sin suficiente stock para la orden
+      }
     });
 
-    // Creación de orden asíncrono
-    addDoc(ordersRef, order)
-      .then((doc) => {
-        SuccessPurchaseMsg(order, doc.id);
-        // Se borra el carrito
-        eraseCart();
-      })
-      .catch((error) => {
-        ErrorPurchaseMsg("Ha ocurrido un error!", order);
-      });
+    if (itemsWithoutStockRequired.length === 0)
+      await batch.commit(); // actualiza Firestore en base a las intrucciones anteriores
+    else NoStockPurchaseMsg(order, itemList); // llama a mostrar un mensaje con todos los items sin suficiente stock
+
+    /////////////////////////////
+    // // Creación de orden async
+    // addDoc(ordersRef, order)
+    //   .then((doc) => {
+    //     SuccessPurchaseMsg(order, doc.id);
+    //     // Se borra el carrito
+    //     eraseCart();
+    //   })
+    //   .catch((error) => {
+    //     ErrorPurchaseMsg("Ha ocurrido un error!", order);
+    //   });
+    /////////////////////////////
   };
 
   const handeInputChange = (el) => {
