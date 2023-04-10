@@ -11,9 +11,6 @@ export const ItemCount = ({ item, quantity, setQuantity, handleAddToCart }) => {
     quantity > 1 && setQuantity(quantity - 1);
   };
 
-  // Aplicación de técnica de renderizado
-  // item.stock === 0 && setQuantity(0);
-
   return (
     <div className="quantity__container">
       <Button
