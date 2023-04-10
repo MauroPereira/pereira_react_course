@@ -13,15 +13,21 @@ import {
   where,
   documentId,
   query,
+  addDoc,
 } from "firebase/firestore";
 import { db } from "../../firebase/config";
 // import { Formik } from "formik";
 
-const SuccessPurchaseMsg = (order, id) => {
+const SuccessPurchaseMsg = (order, id, isConfirmedFunction) => {
   Swal.fire({
     title: "Gracias por tu compra",
     text: `${order.client.firstNames} ${order.client.lastNames} tu pedido con código ${id} está siendo preparado. Pronto recibirás más información a ${order.client.email}.`,
     icon: "success",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      console.log("Se borra el carrito");
+      isConfirmedFunction();
+    }
   });
 };
 
@@ -82,8 +88,6 @@ export const Checkout = () => {
       date: new Date(),
     };
 
-    const itemsWithoutStockRequired = [];
-
     WaitingPurchaseMsg(order);
 
     // sync
@@ -106,6 +110,9 @@ export const Checkout = () => {
     response.docs.forEach((doc) => {
       const item = cart.find((prod) => prod.id === doc.id); // se busca su paralelo en el carrito
 
+      console.log(`doc.data().stock: ${doc.data().stock}`);
+      console.log(`item.cantidad: ${item.cantidad}`);
+
       if (doc.data().stock >= item.cantidad) {
         // se chequea que haya suficiente stock para el pedido
         batch.update(doc.ref, { stock: doc.data.stock - item.cantidad });
@@ -114,22 +121,21 @@ export const Checkout = () => {
       }
     });
 
-    if (itemsWithoutStockRequired.length === 0)
+    if (itemsWithoutStockRequired.length === 0) {
       await batch.commit(); // actualiza Firestore en base a las intrucciones anteriores
-    else NoStockPurchaseMsg(order, itemsWithoutStockRequired); // llama a mostrar un mensaje con todos los items sin suficiente stock
-
-    /////////////////////////////
-    // // Creación de orden async
-    // addDoc(ordersRef, order)
-    //   .then((doc) => {
-    //     SuccessPurchaseMsg(order, doc.id);
-    //     // Se borra el carrito
-    //     eraseCart();
-    //   })
-    //   .catch((error) => {
-    //     ErrorPurchaseMsg("Ha ocurrido un error!", order);
-    //   });
-    /////////////////////////////
+      console.log(itemsWithoutStockRequired);
+      ///////////////////////////
+      // Creación de orden async
+      addDoc(ordersRef, order)
+        .then((doc) => {
+          // Se borra el carrito
+          SuccessPurchaseMsg(order, doc.id, eraseCart());
+        })
+        .catch((error) => {
+          ErrorPurchaseMsg("Ha ocurrido un error!", order);
+        });
+      ///////////////////////////
+    } else NoStockPurchaseMsg(order, itemsWithoutStockRequired); // llama a mostrar un mensaje con todos los items sin suficiente stock
   };
 
   const handeInputChange = (el) => {
