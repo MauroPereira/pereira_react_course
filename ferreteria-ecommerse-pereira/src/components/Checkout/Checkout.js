@@ -26,7 +26,6 @@ const SuccessPurchaseMsg = (order, id, isConfirmedFunction) => {
     allowOutsideClick: false,
   }).then((result) => {
     if (result.isConfirmed) {
-      console.log("Se borra el carrito");
       isConfirmedFunction();
     }
   });
@@ -111,9 +110,9 @@ export const Checkout = () => {
     response.docs.forEach((doc) => {
       const item = cart.find((prod) => prod.id === doc.id); // se busca su paralelo en el carrito
 
+      // Se chequea que haya suficiente stock para el pedido
       if (doc.data().stock >= item.quantity) {
-        // se chequea que haya suficiente stock para el pedido
-        batch.update(doc.ref, { stock: doc.data.stock - item.quantity });
+        batch.update(doc.ref, { stock: doc.data().stock - item.quantity });
       } else {
         itemsWithoutStockRequired.push(item.name); // se crea una lista de los nombres de los items sin suficiente stock para la orden
       }
@@ -121,7 +120,7 @@ export const Checkout = () => {
 
     if (itemsWithoutStockRequired.length === 0) {
       await batch.commit(); // actualiza Firestore en base a las intrucciones anteriores
-      console.log(itemsWithoutStockRequired);
+
       ///////////////////////////
       // Creación de orden async
       addDoc(ordersRef, order)
