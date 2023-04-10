@@ -176,3 +176,4 @@ Los requisitos base serán parte de los criterios de evaluación para aprobar el
 ### Versiones
 
 - v3.3: Incluye los requisitos base sin aplicar una validación extra de los datos de usuario en Checkout. TODO: cargar todos los items de MOCK_DATA en firebase a traves de un admin, agregar mejoras en formularios y batch.
+- v3.3.1: implementado batch
