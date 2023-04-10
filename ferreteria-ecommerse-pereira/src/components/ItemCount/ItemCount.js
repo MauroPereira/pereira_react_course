@@ -12,7 +12,7 @@ export const ItemCount = ({ item, quantity, setQuantity, handleAddToCart }) => {
   };
 
   // Aplicación de técnica de renderizado
-  item.stock === 0 && setQuantity(0);
+  // item.stock === 0 && setQuantity(0);
 
   return (
     <div className="quantity__container">
