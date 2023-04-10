@@ -23,6 +23,7 @@ const SuccessPurchaseMsg = (order, id, isConfirmedFunction) => {
     title: "Gracias por tu compra",
     text: `${order.client.firstNames} ${order.client.lastNames} tu pedido con código ${id} está siendo preparado. Pronto recibirás más información a ${order.client.email}.`,
     icon: "success",
+    allowOutsideClick: false,
   }).then((result) => {
     if (result.isConfirmed) {
       console.log("Se borra el carrito");
@@ -50,6 +51,7 @@ const ErrorPurchaseMsg = (order) => {
 
 const NoStockPurchaseMsg = (order, itemList) => {
   Swal.fire({
+    allowOutsideClick: false,
     title: "No se pudo llevar a cabo su compra!",
     text: `Lo sentimos ${order.client.firstNames} ${
       order.client.lastNames
@@ -74,8 +76,6 @@ export const Checkout = () => {
     contactNumber: "",
   });
 
-  const itemsWithoutStockRequired = [];
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     // TODO: validaciones
@@ -94,6 +94,7 @@ export const Checkout = () => {
     const batch = writeBatch(db);
     const productsRef = collection(db, "productos");
     const ordersRef = collection(db, "orders");
+    const itemsWithoutStockRequired = [];
 
     // Actualización de stock async
     const itemsRef = query(
@@ -110,12 +111,9 @@ export const Checkout = () => {
     response.docs.forEach((doc) => {
       const item = cart.find((prod) => prod.id === doc.id); // se busca su paralelo en el carrito
 
-      console.log(`doc.data().stock: ${doc.data().stock}`);
-      console.log(`item.cantidad: ${item.cantidad}`);
-
-      if (doc.data().stock >= item.cantidad) {
+      if (doc.data().stock >= item.quantity) {
         // se chequea que haya suficiente stock para el pedido
-        batch.update(doc.ref, { stock: doc.data.stock - item.cantidad });
+        batch.update(doc.ref, { stock: doc.data.stock - item.quantity });
       } else {
         itemsWithoutStockRequired.push(item.name); // se crea una lista de los nombres de los items sin suficiente stock para la orden
       }
@@ -129,7 +127,7 @@ export const Checkout = () => {
       addDoc(ordersRef, order)
         .then((doc) => {
           // Se borra el carrito
-          SuccessPurchaseMsg(order, doc.id, eraseCart());
+          SuccessPurchaseMsg(order, doc.id, eraseCart);
         })
         .catch((error) => {
           ErrorPurchaseMsg("Ha ocurrido un error!", order);
