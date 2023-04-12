@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import InputIcon from "@mui/icons-material/Input";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import Swal from "sweetalert2";
 import {
@@ -67,80 +67,63 @@ export const Checkout = () => {
 
   const { cart, totalPrice, eraseCart } = useContext(CartContext);
 
-  // const [values, setValues] = useState({
-  //   firstNames: "",
-  //   lastNames: "",
-  //   address: "",
-  //   email: "",
-  //   contactNumber: "",
-  // });
+  const generateOrder = async (values) => {
+    // TODO: validaciones
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   // TODO: validaciones
+    // Creación de objeto order
+    const order = {
+      client: values,
+      items: cart,
+      finalPrice: totalPrice(),
+      date: new Date(),
+    };
 
-  //   // Creación de objeto order
-  //   const order = {
-  //     client: values,
-  //     items: cart,
-  //     finalPrice: totalPrice(),
-  //     date: new Date(),
-  //   };
+    WaitingPurchaseMsg(order);
 
-  //   WaitingPurchaseMsg(order);
+    // sync
+    const batch = writeBatch(db);
+    const productsRef = collection(db, "productos");
+    const ordersRef = collection(db, "orders");
+    const itemsWithoutStockRequired = [];
 
-  //   // sync
-  //   const batch = writeBatch(db);
-  //   const productsRef = collection(db, "productos");
-  //   const ordersRef = collection(db, "orders");
-  //   const itemsWithoutStockRequired = [];
+    // Actualización de stock async
+    const itemsRef = query(
+      productsRef,
+      where(
+        documentId(),
+        "in",
+        cart.map((prod) => prod.id)
+      )
+    ); // se obtiene la referencia a los items
 
-  //   // Actualización de stock async
-  //   const itemsRef = query(
-  //     productsRef,
-  //     where(
-  //       documentId(),
-  //       "in",
-  //       cart.map((prod) => prod.id)
-  //     )
-  //   ); // se obtiene la referencia a los items
+    const response = await getDocs(itemsRef);
 
-  //   const response = await getDocs(itemsRef);
+    response.docs.forEach((doc) => {
+      const item = cart.find((prod) => prod.id === doc.id); // se busca su paralelo en el carrito
 
-  //   response.docs.forEach((doc) => {
-  //     const item = cart.find((prod) => prod.id === doc.id); // se busca su paralelo en el carrito
+      // Se chequea que haya suficiente stock para el pedido
+      if (doc.data().stock >= item.quantity) {
+        batch.update(doc.ref, { stock: doc.data().stock - item.quantity });
+      } else {
+        itemsWithoutStockRequired.push(item.name); // se crea una lista de los nombres de los items sin suficiente stock para la orden
+      }
+    });
 
-  //     // Se chequea que haya suficiente stock para el pedido
-  //     if (doc.data().stock >= item.quantity) {
-  //       batch.update(doc.ref, { stock: doc.data().stock - item.quantity });
-  //     } else {
-  //       itemsWithoutStockRequired.push(item.name); // se crea una lista de los nombres de los items sin suficiente stock para la orden
-  //     }
-  //   });
+    if (itemsWithoutStockRequired.length === 0) {
+      await batch.commit(); // actualiza Firestore en base a las intrucciones anteriores
 
-  //   if (itemsWithoutStockRequired.length === 0) {
-  //     await batch.commit(); // actualiza Firestore en base a las intrucciones anteriores
-
-  //     ///////////////////////////
-  //     // Creación de orden async
-  //     addDoc(ordersRef, order)
-  //       .then((doc) => {
-  //         // Se borra el carrito
-  //         SuccessPurchaseMsg(order, doc.id, eraseCart);
-  //       })
-  //       .catch((error) => {
-  //         ErrorPurchaseMsg("Ha ocurrido un error!", order);
-  //       });
-  //     ///////////////////////////
-  //   } else NoStockPurchaseMsg(order, itemsWithoutStockRequired); // llama a mostrar un mensaje con todos los items sin suficiente stock
-  // };
-
-  // const handeInputChange = (el) => {
-  //   setValues({
-  //     ...values,
-  //     [el.target.name]: el.target.value,
-  //   });
-  // };
+      ///////////////////////////
+      // Creación de orden async
+      addDoc(ordersRef, order)
+        .then((doc) => {
+          SuccessPurchaseMsg(order, doc.id, eraseCart); // muestra mensaje de éxito y borra el carrito
+        })
+        .catch((error) => {
+          ErrorPurchaseMsg("Ha ocurrido un error!", order); // muestra mensaje de error y no borra el carrito
+        });
+      ///////////////////////////
+    } else NoStockPurchaseMsg(order, itemsWithoutStockRequired); // llama a mostrar un mensaje con todos los items sin suficiente stock
+  };
 
   // Evita entrar al Checkout sin items en el carrito
   if (cart.length === 0) {
@@ -161,7 +144,7 @@ export const Checkout = () => {
             email: "",
             contactNumber: "",
           }}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={generateOrder}
         >
           {({ values, handleChange, handleSubmit }) => (
             <form onSubmit={handleSubmit}>
