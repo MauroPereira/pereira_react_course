@@ -16,7 +16,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 import { db } from "../../firebase/config";
-// import { Formik } from "formik";
+import { Formik } from "formik";
 
 const SuccessPurchaseMsg = (order, id, isConfirmedFunction) => {
   Swal.fire({
@@ -67,80 +67,80 @@ export const Checkout = () => {
 
   const { cart, totalPrice, eraseCart } = useContext(CartContext);
 
-  const [values, setValues] = useState({
-    firstNames: "",
-    lastNames: "",
-    address: "",
-    email: "",
-    contactNumber: "",
-  });
+  // const [values, setValues] = useState({
+  //   firstNames: "",
+  //   lastNames: "",
+  //   address: "",
+  //   email: "",
+  //   contactNumber: "",
+  // });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // TODO: validaciones
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   // TODO: validaciones
 
-    // Creación de objeto order
-    const order = {
-      client: values,
-      items: cart,
-      finalPrice: totalPrice(),
-      date: new Date(),
-    };
+  //   // Creación de objeto order
+  //   const order = {
+  //     client: values,
+  //     items: cart,
+  //     finalPrice: totalPrice(),
+  //     date: new Date(),
+  //   };
 
-    WaitingPurchaseMsg(order);
+  //   WaitingPurchaseMsg(order);
 
-    // sync
-    const batch = writeBatch(db);
-    const productsRef = collection(db, "productos");
-    const ordersRef = collection(db, "orders");
-    const itemsWithoutStockRequired = [];
+  //   // sync
+  //   const batch = writeBatch(db);
+  //   const productsRef = collection(db, "productos");
+  //   const ordersRef = collection(db, "orders");
+  //   const itemsWithoutStockRequired = [];
 
-    // Actualización de stock async
-    const itemsRef = query(
-      productsRef,
-      where(
-        documentId(),
-        "in",
-        cart.map((prod) => prod.id)
-      )
-    ); // se obtiene la referencia a los items
+  //   // Actualización de stock async
+  //   const itemsRef = query(
+  //     productsRef,
+  //     where(
+  //       documentId(),
+  //       "in",
+  //       cart.map((prod) => prod.id)
+  //     )
+  //   ); // se obtiene la referencia a los items
 
-    const response = await getDocs(itemsRef);
+  //   const response = await getDocs(itemsRef);
 
-    response.docs.forEach((doc) => {
-      const item = cart.find((prod) => prod.id === doc.id); // se busca su paralelo en el carrito
+  //   response.docs.forEach((doc) => {
+  //     const item = cart.find((prod) => prod.id === doc.id); // se busca su paralelo en el carrito
 
-      // Se chequea que haya suficiente stock para el pedido
-      if (doc.data().stock >= item.quantity) {
-        batch.update(doc.ref, { stock: doc.data().stock - item.quantity });
-      } else {
-        itemsWithoutStockRequired.push(item.name); // se crea una lista de los nombres de los items sin suficiente stock para la orden
-      }
-    });
+  //     // Se chequea que haya suficiente stock para el pedido
+  //     if (doc.data().stock >= item.quantity) {
+  //       batch.update(doc.ref, { stock: doc.data().stock - item.quantity });
+  //     } else {
+  //       itemsWithoutStockRequired.push(item.name); // se crea una lista de los nombres de los items sin suficiente stock para la orden
+  //     }
+  //   });
 
-    if (itemsWithoutStockRequired.length === 0) {
-      await batch.commit(); // actualiza Firestore en base a las intrucciones anteriores
+  //   if (itemsWithoutStockRequired.length === 0) {
+  //     await batch.commit(); // actualiza Firestore en base a las intrucciones anteriores
 
-      ///////////////////////////
-      // Creación de orden async
-      addDoc(ordersRef, order)
-        .then((doc) => {
-          // Se borra el carrito
-          SuccessPurchaseMsg(order, doc.id, eraseCart);
-        })
-        .catch((error) => {
-          ErrorPurchaseMsg("Ha ocurrido un error!", order);
-        });
-      ///////////////////////////
-    } else NoStockPurchaseMsg(order, itemsWithoutStockRequired); // llama a mostrar un mensaje con todos los items sin suficiente stock
-  };
+  //     ///////////////////////////
+  //     // Creación de orden async
+  //     addDoc(ordersRef, order)
+  //       .then((doc) => {
+  //         // Se borra el carrito
+  //         SuccessPurchaseMsg(order, doc.id, eraseCart);
+  //       })
+  //       .catch((error) => {
+  //         ErrorPurchaseMsg("Ha ocurrido un error!", order);
+  //       });
+  //     ///////////////////////////
+  //   } else NoStockPurchaseMsg(order, itemsWithoutStockRequired); // llama a mostrar un mensaje con todos los items sin suficiente stock
+  // };
 
-  const handeInputChange = (el) => {
-    setValues({
-      ...values,
-      [el.target.name]: el.target.value,
-    });
-  };
+  // const handeInputChange = (el) => {
+  //   setValues({
+  //     ...values,
+  //     [el.target.name]: el.target.value,
+  //   });
+  // };
 
   // Evita entrar al Checkout sin items en el carrito
   if (cart.length === 0) {
@@ -151,81 +151,96 @@ export const Checkout = () => {
     <div className="checkout__container">
       <h2>Checkout</h2>
       <hr />
-      <div className="form__container" onSubmit={handleSubmit}>
-        <form>
-          <label>
-            Nombres:{" "}
-            <input
-              onChange={handeInputChange}
-              value={values.firstNames}
-              type={"text"}
-              placeholder="Tus nombres"
-              required
-              name="firstNames"
-            />{" "}
-          </label>
-          <br></br>
-          <label>
-            Apellidos:{" "}
-            <input
-              onChange={handeInputChange}
-              value={values.lastNames}
-              type={"text"}
-              placeholder="Tus apellidos"
-              required
-              name="lastNames"
-            />
-          </label>
-          <br></br>
-          <label>
-            Dirección de entrega:{" "}
-            <input
-              onChange={handeInputChange}
-              value={values.address}
-              type={"text"}
-              placeholder="Tu dirección"
-              required
-              name="address"
-            />
-          </label>
-          <br></br>
-          <label>
-            e-mail:{" "}
-            <input
-              onChange={handeInputChange}
-              value={values.email}
-              type={"email"}
-              placeholder="Tu e-mail"
-              required
-              name="email"
-            />
-          </label>
-          <br></br>
-          <label>
-            Teléfono/Celular:{" "}
-            <input
-              onChange={handeInputChange}
-              value={values.contactNumber}
-              type={"tel"}
-              placeholder="Tu teléfono o celular"
-              required
-              name="contactNumber"
-            />
-          </label>
 
-          <div className="submit_btn__container">
-            <Button
-              className="submit__btn"
-              variant="contained"
-              startIcon={<InputIcon />}
-              color="success"
-              type="submit"
-            >
-              Confirmar compra
-            </Button>
-          </div>
-        </form>
+      <div className="form__container">
+        <Formik
+          initialValues={{
+            firstNames: "",
+            lastNames: "",
+            address: "",
+            email: "",
+            contactNumber: "",
+          }}
+          onSubmit={(values) => console.log(values)}
+        >
+          {({ values, handleChange, handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              <label>
+                Nombres:{" "}
+                <input
+                  onChange={handleChange}
+                  value={values.firstNames}
+                  type={"text"}
+                  placeholder="Tus nombres"
+                  required
+                  name="firstNames"
+                />{" "}
+              </label>
+              <br></br>
+              <label>
+                Apellidos:{" "}
+                <input
+                  onChange={handleChange}
+                  value={values.lastNames}
+                  type={"text"}
+                  placeholder="Tus apellidos"
+                  required
+                  name="lastNames"
+                />
+              </label>
+              <br></br>
+              <label>
+                Dirección de entrega:{" "}
+                <input
+                  onChange={handleChange}
+                  value={values.address}
+                  type={"text"}
+                  placeholder="Tu dirección"
+                  required
+                  name="address"
+                />
+              </label>
+              <br></br>
+              <label>
+                e-mail:{" "}
+                <input
+                  onChange={handleChange}
+                  value={values.email}
+                  type={"email"}
+                  placeholder="Tu e-mail"
+                  required
+                  name="email"
+                />
+              </label>
+              <br></br>
+              <label>
+                Teléfono/Celular:{" "}
+                <input
+                  onChange={handleChange}
+                  value={values.contactNumber}
+                  type={"tel"}
+                  placeholder="Tu teléfono o celular"
+                  required
+                  name="contactNumber"
+                />
+              </label>
+
+              <div className="submit_btn__container">
+                <Button
+                  className="submit__btn"
+                  variant="contained"
+                  startIcon={<InputIcon />}
+                  color="success"
+                  type="submit"
+                >
+                  Confirmar compra
+                </Button>
+              </div>
+            </form>
+          )}
+        </Formik>
       </div>
+
       {/* ///////////////// */}
       <div className="volver_btn__container">
         <Button
