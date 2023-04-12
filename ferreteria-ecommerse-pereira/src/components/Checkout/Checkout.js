@@ -146,7 +146,7 @@ export const Checkout = () => {
           }}
           onSubmit={generateOrder}
         >
-          {({ values, handleChange, handleSubmit }) => (
+          {({ values, handleChange, handleSubmit, isSubmitting }) => (
             <form onSubmit={handleSubmit}>
               <label>
                 Nombres:{" "}
@@ -215,25 +215,26 @@ export const Checkout = () => {
                   startIcon={<InputIcon />}
                   color="success"
                   type="submit"
+                  disabled={isSubmitting}
                 >
                   Confirmar compra
+                </Button>
+              </div>
+
+              <div className="volver_btn__container">
+                <Button
+                  className="volver__btn"
+                  variant="contained"
+                  startIcon={<ArrowBackIcon />}
+                  onClick={handleReturn}
+                  disabled={isSubmitting}
+                >
+                  Volver
                 </Button>
               </div>
             </form>
           )}
         </Formik>
-      </div>
-
-      {/* ///////////////// */}
-      <div className="volver_btn__container">
-        <Button
-          className="volver__btn"
-          variant="contained"
-          startIcon={<ArrowBackIcon />}
-          onClick={handleReturn}
-        >
-          Volver
-        </Button>
       </div>
     </div>
   );
