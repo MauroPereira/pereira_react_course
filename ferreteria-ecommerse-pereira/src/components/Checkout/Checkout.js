@@ -18,6 +18,7 @@ import {
 import { db } from "../../firebase/config";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import TextField from "@mui/material/TextField";
 
 // Esquéma de validación de datos
 const checkoutValidationSchema = Yup.object().shape({
@@ -171,18 +172,28 @@ export const Checkout = () => {
         >
           {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
             <form onSubmit={handleSubmit}>
-              <label>
-                Nombres:{" "}
-                <input
-                  onChange={handleChange}
-                  value={values.firstNames}
-                  type={"text"}
-                  placeholder="Tus nombres"
-                  name="firstNames"
-                />{" "}
-              </label>
+              <TextField
+                fullWidth
+                id="firstNames"
+                name="firstNames"
+                label="firstNames"
+                value={values.firstNames}
+                onChange={handleChange}
+                error={Boolean(errors.firstNames)}
+                helperText={errors.firstNames}
+              />
               <br></br>
-              <label>
+              <TextField
+                fullWidth
+                id="lastNames"
+                name="lastNames"
+                label="lastNames"
+                value={values.lastNames}
+                onChange={handleChange}
+                error={Boolean(errors.lastNames)}
+                helperText={errors.lastNames}
+              />
+              {/* <label>
                 Apellidos:{" "}
                 <input
                   onChange={handleChange}
@@ -191,44 +202,40 @@ export const Checkout = () => {
                   placeholder="Tus apellidos"
                   name="lastNames"
                 />
-              </label>
+              </label> */}
               <br></br>
-              <label>
-                Dirección de entrega:{" "}
-                <input
-                  onChange={handleChange}
-                  value={values.address}
-                  type={"text"}
-                  placeholder="Tu dirección"
-                  name="address"
-                  itemID="prueba"
-                />
-                {errors.address ? prueba.setCustomValidity("hola") : null}
-              </label>
+              <TextField
+                fullWidth
+                id="address"
+                name="address"
+                label="address"
+                value={values.address}
+                onChange={handleChange}
+                error={Boolean(errors.address)}
+                helperText={errors.address}
+              />
               <br></br>
-              <label>
-                e-mail:{" "}
-                <input
-                  onChange={handleChange}
-                  value={values.email}
-                  type={"email"}
-                  placeholder="Tu e-mail"
-                  name="email"
-                />
-              </label>
-
+              <TextField
+                fullWidth
+                id="email"
+                name="email"
+                label="email"
+                value={values.email}
+                onChange={handleChange}
+                error={Boolean(errors.email)}
+                helperText={errors.email}
+              />
               <br></br>
-              <label>
-                Teléfono/Celular:{" "}
-                <input
-                  onChange={handleChange}
-                  value={values.contactNumber}
-                  type={"tel"}
-                  placeholder="Tu teléfono o celular"
-                  name="contactNumber"
-                />
-              </label>
-
+              <TextField
+                fullWidth
+                id="email"
+                name="contactNumber"
+                label="contactNumber"
+                value={values.contactNumber}
+                onChange={handleChange}
+                error={Boolean(errors.contactNumber)}
+                helperText={errors.contactNumber}
+              />
               <div className="submit_btn__container">
                 <Button
                   className="submit__btn"
@@ -241,7 +248,6 @@ export const Checkout = () => {
                   Confirmar compra
                 </Button>
               </div>
-
               <div className="volver_btn__container">
                 <Button
                   className="volver__btn"
