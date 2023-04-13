@@ -17,6 +17,30 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { Formik } from "formik";
+import * as Yup from "yup";
+
+// Esquéma de validación de datos
+const checkoutValidationSchema = Yup.object().shape({
+  firstNames: Yup.string()
+    .required("Campo obligatorio")
+    .min(3, "Mínimo 3 carácteres")
+    .max(40, "Máximo 40 carácteres"),
+  lastNames: Yup.string()
+    .required("Campo obligatorio")
+    .min(3, "Mínimo 3 carácteres")
+    .max(40, "Máximo 40 carácteres"),
+  address: Yup.string()
+    .required("Campo obligatorio")
+    .min(3, "Mínimo 3 carácteres")
+    .max(40, "Máximo 40 carácteres"),
+  email: Yup.string()
+    .email("El email es inválido")
+    .required("Campo obligatorio"),
+  contactNumber: Yup.number("Ingrese sin el 0 del área y sin el +")
+    .required("Campo obligatorio")
+    .min(10, "Falta algún numero")
+    .max(13, "Sobra un número"),
+});
 
 const SuccessPurchaseMsg = (order, id, isConfirmedFunction) => {
   Swal.fire({
@@ -68,8 +92,6 @@ export const Checkout = () => {
   const { cart, totalPrice, eraseCart } = useContext(CartContext);
 
   const generateOrder = async (values) => {
-    // TODO: validaciones
-
     // Creación de objeto order
     const order = {
       client: values,
@@ -144,9 +166,10 @@ export const Checkout = () => {
             email: "",
             contactNumber: "",
           }}
+          validationSchema={checkoutValidationSchema}
           onSubmit={generateOrder}
         >
-          {({ values, handleChange, handleSubmit, isSubmitting }) => (
+          {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
             <form onSubmit={handleSubmit}>
               <label>
                 Nombres:{" "}
@@ -155,7 +178,6 @@ export const Checkout = () => {
                   value={values.firstNames}
                   type={"text"}
                   placeholder="Tus nombres"
-                  required
                   name="firstNames"
                 />{" "}
               </label>
@@ -167,7 +189,6 @@ export const Checkout = () => {
                   value={values.lastNames}
                   type={"text"}
                   placeholder="Tus apellidos"
-                  required
                   name="lastNames"
                 />
               </label>
@@ -179,9 +200,10 @@ export const Checkout = () => {
                   value={values.address}
                   type={"text"}
                   placeholder="Tu dirección"
-                  required
                   name="address"
+                  itemID="prueba"
                 />
+                {errors.address ? prueba.setCustomValidity("hola") : null}
               </label>
               <br></br>
               <label>
@@ -191,10 +213,10 @@ export const Checkout = () => {
                   value={values.email}
                   type={"email"}
                   placeholder="Tu e-mail"
-                  required
                   name="email"
                 />
               </label>
+
               <br></br>
               <label>
                 Teléfono/Celular:{" "}
@@ -203,7 +225,6 @@ export const Checkout = () => {
                   value={values.contactNumber}
                   type={"tel"}
                   placeholder="Tu teléfono o celular"
-                  required
                   name="contactNumber"
                 />
               </label>
