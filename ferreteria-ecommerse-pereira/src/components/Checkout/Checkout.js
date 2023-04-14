@@ -19,7 +19,6 @@ import { db } from "../../firebase/config";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import TextField from "@mui/material/TextField";
-import { FormControl } from "@mui/material";
 
 // Esquéma de validación de datos
 const checkoutValidationSchema = Yup.object().shape({
@@ -38,10 +37,10 @@ const checkoutValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("El email es inválido")
     .required("Campo obligatorio"),
-  contactNumber: Yup.number("Ingrese sin el 0 del área y sin el +")
+  contactNumber: Yup.number()
     .required("Campo obligatorio")
-    .min(10, "Falta algún numero")
-    .max(13, "Sobra un número"),
+    .lessThan(9999999999, "Sobran números")
+    .moreThan(1111111111, "Faltan números"),
 });
 
 const SuccessPurchaseMsg = (order, id, isConfirmedFunction) => {
@@ -173,76 +172,75 @@ export const Checkout = () => {
         >
           {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
             <form onSubmit={handleSubmit}>
-              <FormControl sx={{ m: 1, width: "25ch" }}>
-                <TextField
-                  fullWidth
-                  className="checkout__textfield"
-                  id="firstNames"
-                  name="firstNames"
-                  label="Nombres"
-                  variant="filled"
-                  value={values.firstNames}
-                  onChange={handleChange}
-                  error={Boolean(errors.firstNames)}
-                  helperText={errors.firstNames}
-                />
-              </FormControl>
-              <FormControl sx={{ m: 1, width: "25ch" }}>
-                <TextField
-                  fullWidth
-                  id="lastNames"
-                  className="checkout__textfield"
-                  name="lastNames"
-                  label="Apellidos"
-                  variant="filled"
-                  value={values.lastNames}
-                  onChange={handleChange}
-                  error={Boolean(errors.lastNames)}
-                  helperText={errors.lastNames}
-                />
-              </FormControl>
-              <FormControl sx={{ m: 1, width: "25ch" }}>
-                <TextField
-                  fullWidth
-                  id="address"
-                  className="checkout__textfield"
-                  name="address"
-                  label="Dirección"
-                  variant="filled"
-                  value={values.address}
-                  onChange={handleChange}
-                  error={Boolean(errors.address)}
-                  helperText={errors.address}
-                />
-              </FormControl>
-              <FormControl sx={{ m: 1, width: "25ch" }}>
-                <TextField
-                  fullWidth
-                  id="email"
-                  className="checkout__textfield"
-                  name="email"
-                  label="e-mail"
-                  variant="filled"
-                  value={values.email}
-                  onChange={handleChange}
-                  error={Boolean(errors.email)}
-                  helperText={errors.email}
-                />
-              </FormControl>
-              <FormControl sx={{ m: 1, width: "25ch" }}>
-                <TextField
-                  fullWidth
-                  id="email"
-                  className="checkout__textfield"
-                  name="contactNumber"
-                  label="Teléfono"
-                  variant="filled"
-                  value={values.contactNumber}
-                  onChange={handleChange}
-                  error={Boolean(errors.contactNumber)}
-                  helperText={errors.contactNumber}
-                />
-              </FormControl>
+              <TextField
+                fullWidth
+                className="checkout__textfield"
+                id="firstNames"
+                name="firstNames"
+                label="Nombres"
+                variant="filled"
+                value={values.firstNames}
+                onChange={handleChange}
+                error={Boolean(errors.firstNames)}
+                helperText={
+                  Boolean(errors.firstNames) ? errors.firstNames : " "
+                }
+              />
+              <br></br>
+              <TextField
+                fullWidth
+                id="lastNames"
+                className="checkout__textfield"
+                name="lastNames"
+                label="Apellidos"
+                variant="filled"
+                value={values.lastNames}
+                onChange={handleChange}
+                error={Boolean(errors.lastNames)}
+                helperText={Boolean(errors.lastNames) ? errors.lastNames : " "}
+              />
+              <br></br>
+              <TextField
+                fullWidth
+                id="address"
+                className="checkout__textfield"
+                name="address"
+                label="Dirección"
+                variant="filled"
+                value={values.address}
+                onChange={handleChange}
+                error={Boolean(errors.address)}
+                helperText={Boolean(errors.address) ? errors.address : " "}
+              />
+              <br></br>
+              <TextField
+                fullWidth
+                id="email"
+                className="checkout__textfield"
+                name="email"
+                label="e-mail"
+                variant="filled"
+                value={values.email}
+                onChange={handleChange}
+                error={Boolean(errors.email)}
+                helperText={Boolean(errors.email) ? errors.email : " "}
+              />
+              <br></br>
+              <TextField
+                fullWidth
+                id="contacNumber"
+                className="checkout__textfield"
+                name="contactNumber"
+                label="Teléfono"
+                variant="filled"
+                value={values.contactNumber}
+                onChange={handleChange}
+                error={Boolean(errors.contactNumber)}
+                helperText={
+                  Boolean(errors.contactNumber) ? errors.contactNumber : " "
+                }
+              />
+              <br></br>
               <div className="submit_btn__container">
                 <Button
                   className="submit__btn"
