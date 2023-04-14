@@ -19,6 +19,7 @@ import { db } from "../../firebase/config";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import TextField from "@mui/material/TextField";
+import MOCK_DATA from "../../data/MOCK_DATA.json";
 
 // Esquéma de validación de datos
 const checkoutValidationSchema = Yup.object().shape({
@@ -147,6 +148,30 @@ export const Checkout = () => {
         });
       ///////////////////////////
     } else NoStockPurchaseMsg(order, itemsWithoutStockRequired); // llama a mostrar un mensaje con todos los items sin suficiente stock
+
+    // //////////////////
+    // const nuevaLista = MOCK_DATA.map((objeto) => {
+    //   return {
+    //     name: objeto.name,
+    //     description: objeto.description,
+    //     price: objeto.price,
+    //     stock: objeto.stock,
+    //     img: objeto.img,
+    //     category: objeto.category,
+    //   };
+    // });
+    // console.log(nuevaLista);
+
+    // nuevaLista.forEach((el) => {
+    //   addDoc(productsRef, el)
+    //     .then(() => {
+    //       console.log(`Agregado ${el.name}`);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    //   //////////////////
+    // });
   };
 
   // Evita entrar al Checkout sin items en el carrito
