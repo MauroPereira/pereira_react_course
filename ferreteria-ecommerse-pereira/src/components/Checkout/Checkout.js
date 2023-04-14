@@ -38,6 +38,7 @@ const checkoutValidationSchema = Yup.object().shape({
     .email("El email es inválido")
     .required("Campo obligatorio"),
   contactNumber: Yup.number()
+    .typeError("Número telefónico inválido")
     .required("Campo obligatorio")
     .lessThan(9999999999, "Sobran números")
     .moreThan(1111111111, "Faltan números"),
@@ -174,10 +175,9 @@ export const Checkout = () => {
             <form onSubmit={handleSubmit}>
               <TextField
                 fullWidth
-                className="checkout__textfield"
-                id="firstNames"
+                className="checkout__textfield first__textfield"
                 name="firstNames"
-                label="Nombres"
+                label={"Nombres"}
                 variant="filled"
                 value={values.firstNames}
                 onChange={handleChange}
@@ -189,7 +189,6 @@ export const Checkout = () => {
               <br></br>
               <TextField
                 fullWidth
-                id="lastNames"
                 className="checkout__textfield"
                 name="lastNames"
                 label="Apellidos"
@@ -202,7 +201,6 @@ export const Checkout = () => {
               <br></br>
               <TextField
                 fullWidth
-                id="address"
                 className="checkout__textfield"
                 name="address"
                 label="Dirección"
@@ -215,7 +213,6 @@ export const Checkout = () => {
               <br></br>
               <TextField
                 fullWidth
-                id="email"
                 className="checkout__textfield"
                 name="email"
                 label="e-mail"
@@ -228,7 +225,6 @@ export const Checkout = () => {
               <br></br>
               <TextField
                 fullWidth
-                id="contacNumber"
                 className="checkout__textfield"
                 name="contactNumber"
                 label="Teléfono"

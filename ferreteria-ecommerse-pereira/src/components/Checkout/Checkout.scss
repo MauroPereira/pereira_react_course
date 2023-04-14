@@ -20,19 +20,27 @@
   }
 
   .form__container {
-    max-width: 600px;
+    max-width: 256px;
+    height: 570px;
     display: flex;
-    text-align: right;
     justify-content: space-between;
+    background-color: white;
+
+    .checkout__textfield,
+    first__textfield {
+      padding-left: 10px;
+      padding-top: 10px;
+    }
 
     .submit_btn__container {
       padding-top: 10px;
+      padding-left: 20px;
+      text-align: center;
     }
     .volver_btn__container {
-      text-align: left;
-      padding-top: 20px;
+      padding-top: 30px;
+      padding-left: 20px;
+      text-align: center;
     }
   }
 }
-
-// Video: 56:50
