@@ -19,6 +19,7 @@ import { db } from "../../firebase/config";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import TextField from "@mui/material/TextField";
+import { FormControl } from "@mui/material";
 
 // Esquéma de validación de datos
 const checkoutValidationSchema = Yup.object().shape({
@@ -172,70 +173,76 @@ export const Checkout = () => {
         >
           {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
             <form onSubmit={handleSubmit}>
-              <TextField
-                fullWidth
-                id="firstNames"
-                name="firstNames"
-                label="firstNames"
-                value={values.firstNames}
-                onChange={handleChange}
-                error={Boolean(errors.firstNames)}
-                helperText={errors.firstNames}
-              />
-              <br></br>
-              <TextField
-                fullWidth
-                id="lastNames"
-                name="lastNames"
-                label="lastNames"
-                value={values.lastNames}
-                onChange={handleChange}
-                error={Boolean(errors.lastNames)}
-                helperText={errors.lastNames}
-              />
-              {/* <label>
-                Apellidos:{" "}
-                <input
+              <FormControl sx={{ m: 1, width: "25ch" }}>
+                <TextField
+                  fullWidth
+                  className="checkout__textfield"
+                  id="firstNames"
+                  name="firstNames"
+                  label="Nombres"
+                  variant="filled"
+                  value={values.firstNames}
                   onChange={handleChange}
-                  value={values.lastNames}
-                  type={"text"}
-                  placeholder="Tus apellidos"
-                  name="lastNames"
+                  error={Boolean(errors.firstNames)}
+                  helperText={errors.firstNames}
                 />
-              </label> */}
-              <br></br>
-              <TextField
-                fullWidth
-                id="address"
-                name="address"
-                label="address"
-                value={values.address}
-                onChange={handleChange}
-                error={Boolean(errors.address)}
-                helperText={errors.address}
-              />
-              <br></br>
-              <TextField
-                fullWidth
-                id="email"
-                name="email"
-                label="email"
-                value={values.email}
-                onChange={handleChange}
-                error={Boolean(errors.email)}
-                helperText={errors.email}
-              />
-              <br></br>
-              <TextField
-                fullWidth
-                id="email"
-                name="contactNumber"
-                label="contactNumber"
-                value={values.contactNumber}
-                onChange={handleChange}
-                error={Boolean(errors.contactNumber)}
-                helperText={errors.contactNumber}
-              />
+              </FormControl>
+              <FormControl sx={{ m: 1, width: "25ch" }}>
+                <TextField
+                  fullWidth
+                  id="lastNames"
+                  className="checkout__textfield"
+                  name="lastNames"
+                  label="Apellidos"
+                  variant="filled"
+                  value={values.lastNames}
+                  onChange={handleChange}
+                  error={Boolean(errors.lastNames)}
+                  helperText={errors.lastNames}
+                />
+              </FormControl>
+              <FormControl sx={{ m: 1, width: "25ch" }}>
+                <TextField
+                  fullWidth
+                  id="address"
+                  className="checkout__textfield"
+                  name="address"
+                  label="Dirección"
+                  variant="filled"
+                  value={values.address}
+                  onChange={handleChange}
+                  error={Boolean(errors.address)}
+                  helperText={errors.address}
+                />
+              </FormControl>
+              <FormControl sx={{ m: 1, width: "25ch" }}>
+                <TextField
+                  fullWidth
+                  id="email"
+                  className="checkout__textfield"
+                  name="email"
+                  label="e-mail"
+                  variant="filled"
+                  value={values.email}
+                  onChange={handleChange}
+                  error={Boolean(errors.email)}
+                  helperText={errors.email}
+                />
+              </FormControl>
+              <FormControl sx={{ m: 1, width: "25ch" }}>
+                <TextField
+                  fullWidth
+                  id="email"
+                  className="checkout__textfield"
+                  name="contactNumber"
+                  label="Teléfono"
+                  variant="filled"
+                  value={values.contactNumber}
+                  onChange={handleChange}
+                  error={Boolean(errors.contactNumber)}
+                  helperText={errors.contactNumber}
+                />
+              </FormControl>
               <div className="submit_btn__container">
                 <Button
                   className="submit__btn"
