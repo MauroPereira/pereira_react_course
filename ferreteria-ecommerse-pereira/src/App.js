@@ -8,6 +8,7 @@ import AboutUs from "./components/AboutUs/AboutUs";
 import Contact from "./components/Contact/Contact";
 import { Cart } from "./components/Cart/Cart";
 import { Checkout } from "./components/Checkout/Checkout";
+import { LoadFile } from "./components/Loadfile/LoadFile";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -66,6 +67,14 @@ function App() {
               <div>
                 <DolarsiApi />
                 <Checkout />
+              </div>
+            }
+          />
+          <Route
+            path="/loadfile"
+            element={
+              <div>
+                <LoadFile />
               </div>
             }
           />
