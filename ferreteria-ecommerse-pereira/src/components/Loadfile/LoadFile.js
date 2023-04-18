@@ -3,6 +3,16 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { ref, uploadBytes } from "firebase/storage";
+import { storageInstinto as storage } from "../../firebase/config";
+
+const uploadFile = (file) => {
+  console.log(file.name);
+  const storageRef = ref(storage, file.name);
+  uploadBytes(storageRef, file).then((snapshot) => {
+    console.log(snapshot);
+  });
+};
 
 export const LoadFile = () => {
   const navigate = useNavigate();
@@ -20,7 +30,7 @@ export const LoadFile = () => {
           type="file"
           name=""
           id=""
-          onChange={(el) => console.log(el.target.files[0])}
+          onChange={(el) => uploadFile(el.target.files[0])}
         ></input>
       </div>
 
