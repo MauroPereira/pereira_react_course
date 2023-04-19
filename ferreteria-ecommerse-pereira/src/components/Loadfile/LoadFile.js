@@ -20,18 +20,23 @@ export const LoadFile = () => {
     navigate(-1);
   };
 
+  const [file, setFile] = useState(null);
+
   return (
     <div className="cargar_archivo__container">
       <h2>Cargar archivo</h2>
       <hr />
 
       <div>
-        <input
-          type="file"
-          name=""
-          id=""
-          onChange={(el) => uploadFile(el.target.files[0])}
-        ></input>
+        <form onSubmit={handreSubmit}>
+          <input
+            type="file"
+            name=""
+            id=""
+            onChange={(el) => setFile(el.target.files[0])}
+          ></input>
+          <buton>Subir comprobante</buton>
+        </form>
       </div>
 
       <div className="btns_container"></div>
