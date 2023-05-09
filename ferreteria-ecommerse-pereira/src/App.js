@@ -15,75 +15,78 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { CartProvider } from "./context/CartContext";
+import { LoginProvider } from "./context/LoginContext";
 
 function App() {
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <Navbar />
-        <MainTitle />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div>
-                <DolarsiApi />
-                <ItemListContainer greeting="Productos" />
-              </div>
-            }
-          />
-          <Route
-            path="/productos/:categoryId"
-            element={
-              <div>
-                <DolarsiApi />
-                <ItemListContainer greeting="Productos" />
-              </div>
-            }
-          />
-          <Route
-            path="/detail/:itemId"
-            element={
-              <div>
-                <DolarsiApi />
-                <ItemDetailContainer greeting="Detalle de producto" />
-              </div>
-            }
-          />
-          <Route path="/nosotros" element={<AboutUs />} />
-          <Route path="/contacto" element={<Contact />} />
-          <Route
-            path="/cart"
-            element={
-              <div>
-                <DolarsiApi />
-                <Cart />
-              </div>
-            }
-          />
-          <Route
-            path="/checkout"
-            element={
-              <div>
-                <DolarsiApi />
-                <Checkout />
-              </div>
-            }
-          />
-          <Route
-            path="/loadfile"
-            element={
-              <div>
-                <LoadFile />
-              </div>
-            }
-          />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+    <LoginProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <Navbar />
+          <MainTitle />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <div>
+                  <DolarsiApi />
+                  <ItemListContainer greeting="Productos" />
+                </div>
+              }
+            />
+            <Route
+              path="/productos/:categoryId"
+              element={
+                <div>
+                  <DolarsiApi />
+                  <ItemListContainer greeting="Productos" />
+                </div>
+              }
+            />
+            <Route
+              path="/detail/:itemId"
+              element={
+                <div>
+                  <DolarsiApi />
+                  <ItemDetailContainer greeting="Detalle de producto" />
+                </div>
+              }
+            />
+            <Route path="/nosotros" element={<AboutUs />} />
+            <Route path="/contacto" element={<Contact />} />
+            <Route
+              path="/cart"
+              element={
+                <div>
+                  <DolarsiApi />
+                  <Cart />
+                </div>
+              }
+            />
+            <Route
+              path="/checkout"
+              element={
+                <div>
+                  <DolarsiApi />
+                  <Checkout />
+                </div>
+              }
+            />
+            <Route
+              path="/loadfile"
+              element={
+                <div>
+                  <LoadFile />
+                </div>
+              }
+            />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
 
-        {/* {<Footer />} */}
-      </BrowserRouter>
-    </CartProvider>
+          {/* {<Footer />} */}
+        </BrowserRouter>
+      </CartProvider>
+    </LoginProvider>
   );
 }
 
