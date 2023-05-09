@@ -2,23 +2,21 @@ import { useState } from "react";
 import "./LoginScreen.scss";
 
 export const LoginScreen = () => {
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleOnChangeEmail = (e) => {
-    console.log(e.target.value);
-    setEmail(e.target.value);
-  };
-
-  const handleOnChangePassword = (e) => {
-    console.log(e.target.value);
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(email);
-    console.log(password);
+  const handleInputChange = (e) => {
+    // Se aplica spread y actualizo la propiedad correspondiente, debido a que no puedo tener dos con el mismo
+    // nombre, se sobreescribe. [] es un selector dinámico de propiedades
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
@@ -27,18 +25,20 @@ export const LoginScreen = () => {
       <hr />
       <form onSubmit={handleSubmit}>
         <input
-          value={email}
+          value={values.email}
           type={"text"}
-          onChange={handleOnChangeEmail}
+          onChange={handleInputChange}
           className="form-control"
           placeholder="Tu email"
+          name="email"
         ></input>
         <input
-          value={password}
+          value={values.password}
           type={"text"}
-          onChange={handleOnChangePassword}
+          onChange={handleInputChange}
           className="form-control my-3"
           placeholder="Tu password"
+          name="password"
         ></input>
         <button className="btn btn-primary" type="submit">
           Login
