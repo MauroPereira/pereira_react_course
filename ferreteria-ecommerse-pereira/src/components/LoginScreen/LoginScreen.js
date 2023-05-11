@@ -1,7 +1,10 @@
 import { useState } from "react";
 import "./LoginScreen.scss";
+import { LoginContext } from "../../context/LoginContext";
 
 export const LoginScreen = () => {
+  const { user } = useContext(LoginContext);
+
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -19,6 +22,11 @@ export const LoginScreen = () => {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    tryLogin(values);
+  };
+
   return (
     <div className="login_screen__container">
       <h2>Login</h2>
@@ -34,7 +42,7 @@ export const LoginScreen = () => {
         ></input>
         <input
           value={values.password}
-          type={"text"}
+          type={"password"}
           onChange={handleInputChange}
           className="form-control my-3"
           placeholder="Tu password"
