@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { LoginContext } from "../context/LoginContext";
 import { Navbar } from "../components/Navbar/Navbar";
 import { ItemListContainer } from "../components/ItemListContainer/ItemListContainer";
-import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import ItemDetailContainer from "../components/ItemDetailContainer/ItemDetailContainer";
 import { MainTitle } from "../components/MainTitle/MainTitle";
 import DolarsiApi from "../components/DolarsiApi/DolarsiApi";
 import AboutUs from "../components/AboutUs/AboutUs";
@@ -9,8 +11,7 @@ import Contact from "../components/Contact/Contact";
 import { Cart } from "../components/Cart/Cart";
 import { Checkout } from "../components/Checkout/Checkout";
 import { LoadFile } from "../components/Loadfile/LoadFile";
-import { useContext } from "react";
-import { LoginContext } from "../context/LoginContext";
+import { LoginScreen } from "../components/LoginScreen/LoginScreen";
 
 export const AppRouter = () => {
   const { user } = useContext(LoginContext);

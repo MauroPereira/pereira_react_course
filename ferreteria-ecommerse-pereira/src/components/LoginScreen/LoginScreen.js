@@ -1,17 +1,14 @@
-import { useState } from "react";
 import "./LoginScreen.scss";
+import { useState, useContext } from "react";
 import { LoginContext } from "../../context/LoginContext";
 
 export const LoginScreen = () => {
-  const { user } = useContext(LoginContext);
+  const { tryLogin } = useContext(LoginContext);
 
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   const handleInputChange = (e) => {
     // Se aplica spread y actualizo la propiedad correspondiente, debido a que no puedo tener dos con el mismo
