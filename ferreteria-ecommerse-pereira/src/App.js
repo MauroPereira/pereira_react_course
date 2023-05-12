@@ -6,7 +6,7 @@ import "@fontsource/roboto/700.css";
 import { BrowserRouter } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import { LoginProvider } from "./context/LoginContext";
-import { AppRouter } from "./router/AppRouter";
+import { AppRouter } from "./routes/AppRoutes.js";
 
 function App() {
   return (
