@@ -10,7 +10,7 @@ import { Cart } from "../components/Cart/Cart";
 import { Checkout } from "../components/Checkout/Checkout";
 import { LoadFile } from "../components/Loadfile/LoadFile";
 
-export const PrivateRoutes = () => {
+const PrivateRoutes = () => {
   return (
     <>
       <Navbar />
@@ -77,3 +77,5 @@ export const PrivateRoutes = () => {
     </>
   );
 };
+
+export default PrivateRoutes;

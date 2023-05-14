@@ -37,8 +37,16 @@ export const LoginProvider = ({ children }) => {
       });
     }
   };
+
+  const logout = () => {
+    setUser({
+      email: null,
+      logged: false,
+    });
+  };
+
   return (
-    <LoginContext.Provider value={{ user, tryLogin }}>
+    <LoginContext.Provider value={{ user, tryLogin, logout }}>
       {children}
     </LoginContext.Provider>
   );
