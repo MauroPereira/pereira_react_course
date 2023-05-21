@@ -3,7 +3,6 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { BrowserRouter } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import { LoginProvider } from "./context/LoginContext";
 import AppRouter from "./routes/AppRouter";
@@ -12,10 +11,8 @@ function App() {
   return (
     <LoginProvider>
       <CartProvider>
-        <BrowserRouter>
-          <AppRouter />
-          {/* {<Footer />} */}
-        </BrowserRouter>
+        <AppRouter />
+        {/* {<Footer />} */}
       </CartProvider>
     </LoginProvider>
   );

@@ -8,8 +8,7 @@ const AppRouter = () => {
   const { user } = useContext(LoginContext);
   return (
     <BrowserRouter>
-      user.logged ? <PrivateRoutes />
-      : <PublicRoutes />
+      {user.logged ? <PrivateRoutes /> : <PublicRoutes />}
     </BrowserRouter>
   );
 };
