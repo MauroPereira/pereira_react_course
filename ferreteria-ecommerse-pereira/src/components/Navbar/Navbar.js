@@ -2,8 +2,11 @@ import "./Navbar.scss";
 import logo from "./icono_ferreteria.png";
 import { CartWidget } from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { LoginContext } from "../../context/LoginContext";
 
 export const Navbar = () => {
+  const { user, logout } = useContext(LoginContext);
   return (
     <header className="header">
       <div className="header__container">
@@ -33,8 +36,13 @@ export const Navbar = () => {
             Contacto
           </Link>
         </nav>
-
         <CartWidget />
+      </div>
+      <div>
+        <h6>Bienvenido {user.email}</h6>
+        <button className="logout-btn" onClick={logout}>
+          Salir
+        </button>
       </div>
     </header>
   );
