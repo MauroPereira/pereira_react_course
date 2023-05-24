@@ -34,7 +34,7 @@ export const LoginScreen = () => {
   };
 
   return (
-    <div className="login_detail__container">
+    <div className="login__container">
       <Paper className="paper_login" elevation={6}>
         <Box className="box_login">
           <Typography component="h1" variant="h5">
