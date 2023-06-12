@@ -3,44 +3,52 @@
   align-items: center;
   justify-content: center;
 
-  .paper_login {
-    max-width: 400px;
-    height: 400px;
-    text-align: center;
+  .grid_login {
+    display: grid;
+    grid-gap: 0;
+    align-items: center;
+    justify-content: center;
+    grid-auto-flow: column;
 
-    .box_login {
-      img {
-        padding-top: 2rem;
-        height: 200px;
-        width: 200px;
-        display: "flex";
-      }
+    .paper_login {
+      max-width: 400px;
+      height: 400px;
+      text-align: center;
 
-      .loginName {
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-right: 1px;
-        padding-left: 1px;
-      }
+      .box_login {
+        img {
+          padding-top: 2rem;
+          height: 200px;
+          width: 200px;
+          display: "flex";
+        }
 
-      .loginDescription {
-        font-size: 1rem;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+        .loginName {
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-right: 1px;
+          padding-left: 1px;
+        }
 
-      .strong_stock_chicho {
-        font-size: 17.5px;
-      }
+        .loginDescription {
+          font-size: 1rem;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
 
-      .volver__btn {
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        .strong_stock_chicho {
+          font-size: 17.5px;
+        }
+
+        .volver__btn {
+          text-align: center;
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
       }
     }
   }

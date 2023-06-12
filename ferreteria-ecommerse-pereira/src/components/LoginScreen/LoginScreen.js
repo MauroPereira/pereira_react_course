@@ -35,14 +35,7 @@ export const LoginScreen = () => {
 
   return (
     <div className="login__container">
-      <Grid
-        container
-        spacing={0}
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        sx={{ minHeight: "100vh" }}
-      >
+      <Grid className="grid_login" sx={{ minHeight: "100vh" }}>
         <Grid item xs={3}>
           <Paper className="paper_login" elevation={6}>
             <Box className="box_login">
