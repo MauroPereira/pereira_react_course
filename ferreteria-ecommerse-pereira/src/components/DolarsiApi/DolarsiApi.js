@@ -4,26 +4,31 @@ import { useEffect } from "react";
 
 const DolarsiApi = () => {
   const [dolarPrice, setDolarPrice] = useState(0);
-  const [loadingMsg, setLoadingMsg] = useState(true); // Primero False para no mostrar el mensaje de Loading
+  const [loadingMsg, setLoadingMsg] = useState(true);
 
   useEffect(() => {
-    fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
+    fetch("https://api.bluelytics.com.ar/v2/latest")
       .then((resp) => resp.json())
       .then((data) => {
-        setDolarPrice(data[0].casa.venta.replace(",", "."));
+        // Obtenemos el precio del dólar blue
+        setDolarPrice(data.blue.value_avg);
+      })
+      .catch((error) => {
+        console.error("Error al obtener el precio del dólar:", error);
+        setDolarPrice("Error al cargar");
       })
       .finally(() => {
-        setLoadingMsg(false); // para asegurarse que no se muestre el mensaje de Loading
+        setLoadingMsg(false);
       });
   }, []);
 
   return (
     <div className="dolar_container">
-      <h2>Precio del dolar hoy</h2>
+      <h2>Precio del dolar blue hoy</h2>
       <hr />
       {loadingMsg ? (
         <h4>
-          Obteniendo cotización de https://www.dolarsi.com/... Espere por favor
+          Obteniendo cotización... Espere por favor
         </h4>
       ) : (
         <h4>${dolarPrice}</h4>
