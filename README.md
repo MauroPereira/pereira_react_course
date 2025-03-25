@@ -179,3 +179,4 @@ Los requisitos base serán parte de los criterios de evaluación para aprobar el
 - v3.3.1: implementado batch
 - v3.3.2: implementado mejora de formulario con Formik
 - v3.3.3: implementada validaciones con Yup, Formik y MUI
+- v3.3.4: cambiada la api que adquiere la cotización del dolar, ahora es oficial
