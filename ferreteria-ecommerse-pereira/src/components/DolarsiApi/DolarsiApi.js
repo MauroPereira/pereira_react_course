@@ -11,7 +11,7 @@ const DolarsiApi = () => {
       .then((resp) => resp.json())
       .then((data) => {
         // Obtenemos el precio del dólar oficial
-        setDolarPrice(data.oficialvalue_avg);
+        setDolarPrice(data.oficial.value_avg);
       })
       .catch((error) => {
         console.error("Error al obtener el precio del dólar:", error);
