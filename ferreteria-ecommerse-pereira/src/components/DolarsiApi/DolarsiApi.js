@@ -10,8 +10,8 @@ const DolarsiApi = () => {
     fetch("https://api.bluelytics.com.ar/v2/latest")
       .then((resp) => resp.json())
       .then((data) => {
-        // Obtenemos el precio del dólar blue
-        setDolarPrice(data.blue.value_avg);
+        // Obtenemos el precio del dólar oficial
+        setDolarPrice(data.oficial.value_avg);
       })
       .catch((error) => {
         console.error("Error al obtener el precio del dólar:", error);
@@ -24,7 +24,7 @@ const DolarsiApi = () => {
 
   return (
     <div className="dolar_container">
-      <h2>Precio del dolar blue hoy</h2>
+      <h2>Precio del dolar oficial hoy</h2>
       <hr />
       {loadingMsg ? (
         <h4>
